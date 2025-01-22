@@ -1,0 +1,848 @@
+<html>
+  <head>
+    <title>Patrons & Chairs - ICETITSC-2025</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .gradient-bg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23ffffff" fill-opacity="0.05" width="100" height="100"/></svg>')
+          repeat;
+        opacity: 0.1;
+      }
+
+      .committee-card {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(229, 231, 235, 0.5);
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.95);
+      }
+
+      .committee-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        border-color: #3b82f6;
+      }
+
+      .section-title {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 15px;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+        border-radius: 2px;
+      }
+
+      .avatar-image {
+        border-radius: 50%;
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+        border: 4px solid #ffffff;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .committee-card:hover .avatar-image {
+        transform: scale(1.05);
+        border-color: #3b82f6;
+      }
+
+      .social-links a {
+        transition: all 0.3s ease;
+        padding: 10px;
+        border-radius: 50%;
+        background: #f8fafc;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+      }
+
+      .social-links a:hover {
+        background: #3b82f6;
+        transform: translateY(-3px);
+      }
+
+      .section-container {
+        position: relative;
+        background: linear-gradient(to bottom, #f8fafc, #ffffff);
+        border-radius: 20px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .role-badge {
+        display: inline-block;
+        padding: 6px 12px;
+        background: #eef2ff;
+        color: #3b82f6;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Include the navbar here -->
+
+    <!-- Hero Section -->
+    <div class="gradient-bg py-32 px-4 relative">
+      <div class="container mx-auto text-center text-white relative z-10">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6" data-aos="fade-down">
+          Committee Members
+        </h1>
+        <p
+          class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto font-light"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          Meet our distinguished patrons and chairs leading ICETITSC-2025
+          towards excellence
+        </p>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 -mt-20 relative z-20">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <!-- Chief Patrons -->
+        <div
+          class="section-container p-8 md:p-12"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-16 section-title"
+          >
+            Chief Patrons
+          </h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-1 gap-8">
+            <div
+              class="committee-card bg-white rounded-xl shadow-sm overflow-hidden col-span-full lg:col-span-1 p-8 text-center"
+            >
+              <div class="relative mb-6">
+                <img
+                  src="https://ui-avatars.com/api/?name=JP+Saini&background=3b82f6&color=fff&size=400"
+                  alt="Prof. J P Saini"
+                  class="avatar-image"
+                />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Prof. J P Saini
+              </h3>
+              <p class="text-blue-600 font-medium mb-3">
+                Hon'ble Vice Chancellor
+              </p>
+              <p class="text-gray-600 mb-6">
+                Madan Mohan Malaviya University of Technology, Gorakhpur
+              </p>
+              <div class="social-links flex justify-center space-x-4">
+                <a
+                  href="mailto:vc@mmmut.ac.in"
+                  class="text-blue-600 hover:text-white"
+                >
+                  <i class="bx bx-envelope text-xl"></i>
+                </a>
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bxl-linkedin text-xl"></i>
+                </a>
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bx-globe text-xl"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conference Chairs -->
+        <div
+          class="section-container p-8 md:p-12"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-16 section-title"
+          >
+            Conference Chairs
+          </h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <div
+              class="committee-card bg-white rounded-xl shadow-sm overflow-hidden p-8 text-center"
+            >
+              <div class="relative mb-6">
+                <img
+                  src="https://ui-avatars.com/api/?name=Shiva+Prakash&background=2563eb&color=fff&size=400"
+                  alt="Prof. Shiva Prakash"
+                  class="avatar-image"
+                />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Prof. Shiva Prakash
+              </h3>
+              <p class="text-blue-600 font-medium mb-2">
+                Head, Department of ITCA
+              </p>
+              <p class="text-gray-600 mb-3">MMMUT, Gorakhpur</p>
+              <p class="text-blue-600 font-semibold mb-4">Chairman</p>
+              <div class="social-links flex justify-center space-x-4">
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bx-envelope text-xl"></i>
+                </a>
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bxl-linkedin text-xl"></i>
+                </a>
+              </div>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-xl shadow-sm overflow-hidden p-8 text-center"
+            >
+              <div class="relative mb-6">
+                <img
+                  src="https://ui-avatars.com/api/?name=VK+Mishra&background=2563eb&color=fff&size=400"
+                  alt="Prof. V. K. Mishra"
+                  class="avatar-image"
+                />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Prof. V. K. Mishra
+              </h3>
+              <p class="text-blue-600 font-medium mb-2">
+                Head, Department of MSC
+              </p>
+              <p class="text-gray-600 mb-3">MMMUT, Gorakhpur</p>
+              <p class="text-blue-600 font-semibold mb-4">Chairman</p>
+              <div class="social-links flex justify-center space-x-4">
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bx-envelope text-xl"></i>
+                </a>
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bxl-linkedin text-xl"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Organizing Secretaries -->
+        <div
+          class="section-container p-8"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-16 section-title"
+          >
+            Organizing Secretaries
+          </h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              class="committee-card bg-white rounded-xl shadow-sm overflow-hidden p-8 text-center"
+            >
+              <div class="relative mb-6">
+                <img
+                  src="https://ui-avatars.com/api/?name=RK+Dwivedi&background=1d4ed8&color=fff&size=400"
+                  alt="Dr. R. K. Dwivedi"
+                  class="avatar-image"
+                />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Dr. R. K. Dwivedi
+              </h3>
+              <p class="text-blue-600 font-medium mb-3">Organizing Secretary</p>
+              <p class="text-gray-600 mb-6">MMMUT, Gorakhpur</p>
+              <div class="social-links flex justify-center space-x-4">
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bx-envelope text-xl"></i>
+                </a>
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bxl-linkedin text-xl"></i>
+                </a>
+              </div>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-xl shadow-sm overflow-hidden p-8 text-center"
+            >
+              <div class="relative mb-6">
+                <img
+                  src="https://ui-avatars.com/api/?name=AK+Barnwal&background=1d4ed8&color=fff&size=400"
+                  alt="Dr. A. K. Barnwal"
+                  class="avatar-image"
+                />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Dr. A. K. Barnwal
+              </h3>
+              <p class="text-blue-600 font-medium mb-3">Organizing Secretary</p>
+              <p class="text-gray-600 mb-6">MMMUT, Gorakhpur</p>
+              <div class="social-links flex justify-center space-x-4">
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bx-envelope text-xl"></i>
+                </a>
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bxl-linkedin text-xl"></i>
+                </a>
+              </div>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-xl shadow-sm overflow-hidden p-8 text-center"
+            >
+              <div class="relative mb-6">
+                <img
+                  src="https://ui-avatars.com/api/?name=Harish+Chandra&background=1d4ed8&color=fff&size=400"
+                  alt="Dr. Harish Chandra"
+                  class="avatar-image"
+                />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Dr. Harish Chandra
+              </h3>
+              <p class="text-blue-600 font-medium mb-3">Organizing Secretary</p>
+              <p class="text-gray-600 mb-6">MMMUT, Gorakhpur</p>
+              <div class="social-links flex justify-center space-x-4">
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bx-envelope text-xl"></i>
+                </a>
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bxl-linkedin text-xl"></i>
+                </a>
+              </div>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-xl shadow-sm overflow-hidden p-8 text-center"
+            >
+              <div class="relative mb-6">
+                <img
+                  src="https://ui-avatars.com/api/?name=MK+Gupta&background=1d4ed8&color=fff&size=400"
+                  alt="Mr. M. K. Gupta"
+                  class="avatar-image"
+                />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Mr. M. K. Gupta
+              </h3>
+              <p class="text-blue-600 font-medium mb-3">Organizing Secretary</p>
+              <p class="text-gray-600 mb-6">MMMUT, Gorakhpur</p>
+              <div class="social-links flex justify-center space-x-4">
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bx-envelope text-xl"></i>
+                </a>
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bxl-linkedin text-xl"></i>
+                </a>
+              </div>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-xl shadow-sm overflow-hidden p-8 text-center"
+            >
+              <div class="relative mb-6">
+                <img
+                  src="https://ui-avatars.com/api/?name=Kumud+Patel&background=1d4ed8&color=fff&size=400"
+                  alt="Ms. Kumud Patel"
+                  class="avatar-image"
+                />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Ms. Kumud Patel
+              </h3>
+              <p class="text-blue-600 font-medium mb-3">Organizing Secretary</p>
+              <p class="text-gray-600 mb-6">MMMUT, Gorakhpur</p>
+              <div class="social-links flex justify-center space-x-4">
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bx-envelope text-xl"></i>
+                </a>
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bxl-linkedin text-xl"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Advisory Committee -->
+        <div
+          class="section-container p-8"
+          data-aos="fade-up"
+          data-aos-delay="800"
+        >
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-16 section-title"
+          >
+            Advisory Committee
+          </h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Advisory Committee Members -->
+            <div
+              class="committee-card bg-white rounded-xl shadow-sm overflow-hidden p-8 text-center"
+            >
+              <div class="relative mb-6">
+                <img
+                  src="https://ui-avatars.com/api/?name=RK+Buyya&background=1d4ed8&color=fff&size=400"
+                  alt="Prof. R K Buyya"
+                  class="avatar-image"
+                />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Prof. R K Buyya
+              </h3>
+              <p class="text-blue-600 font-medium mb-3">Melbourne University</p>
+              <p class="text-gray-600 mb-6">Australia</p>
+              <div class="social-links flex justify-center space-x-4">
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bx-envelope text-xl"></i>
+                </a>
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bxl-linkedin text-xl"></i>
+                </a>
+              </div>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-xl shadow-sm overflow-hidden p-8 text-center"
+            >
+              <div class="relative mb-6">
+                <img
+                  src="https://ui-avatars.com/api/?name=Manoj+Misra&background=1d4ed8&color=fff&size=400"
+                  alt="Prof. Manoj Misra"
+                  class="avatar-image"
+                />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Prof. Manoj Misra
+              </h3>
+              <p class="text-blue-600 font-medium mb-3">IIT Roorkee</p>
+              <div class="social-links flex justify-center space-x-4">
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bx-envelope text-xl"></i>
+                </a>
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bxl-linkedin text-xl"></i>
+                </a>
+              </div>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-xl shadow-sm overflow-hidden p-8 text-center"
+            >
+              <div class="relative mb-6">
+                <img
+                  src="https://ui-avatars.com/api/?name=GR+Sinha&background=1d4ed8&color=fff&size=400"
+                  alt="Prof. G R Sinha"
+                  class="avatar-image"
+                />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Prof. G R Sinha
+              </h3>
+              <p class="text-blue-600 font-medium mb-3">IISC Bangalore</p>
+              <div class="social-links flex justify-center space-x-4">
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bx-envelope text-xl"></i>
+                </a>
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bxl-linkedin text-xl"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Continue with similar cards for remaining members -->
+            <div
+              class="committee-card bg-white rounded-xl shadow-sm overflow-hidden p-8 text-center"
+            >
+              <div class="relative mb-6">
+                <img
+                  src="https://ui-avatars.com/api/?name=Rajeev+Srivastava&background=1d4ed8&color=fff&size=400"
+                  alt="Prof. Rajeev Srivastava"
+                  class="avatar-image"
+                />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Prof. Rajeev Srivastava
+              </h3>
+              <p class="text-blue-600 font-medium mb-3">IIT BHU</p>
+              <div class="social-links flex justify-center space-x-4">
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bx-envelope text-xl"></i>
+                </a>
+                <a href="#" class="text-blue-600 hover:text-white">
+                  <i class="bx bxl-linkedin text-xl"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Add remaining members following the same pattern -->
+            <!-- ... Add cards for remaining advisory committee members ... -->
+          </div>
+        </div>
+
+        <!-- Technical Program Committee -->
+        <div
+          class="section-container p-8"
+          data-aos="fade-up"
+          data-aos-delay="1000"
+        >
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-16 section-title"
+          >
+            Technical Program Committee
+          </h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- TPC Members -->
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Dr. Anurag Singh
+              </h3>
+              <p class="text-blue-600">NIT Delhi</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Prof. Nanhay Singh
+              </h3>
+              <p class="text-blue-600">NSUT New Delhi</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Dr. Gaurav Barnwal
+              </h3>
+              <p class="text-blue-600">BHU Varanashi</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Dr. N. P. Singh
+              </h3>
+              <p class="text-blue-600">NIT Jalandhar</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Prof. Divakar Yadav
+              </h3>
+              <p class="text-blue-600">IGNOU New Delhi</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Dr. Sanjoy Das
+              </h3>
+              <p class="text-blue-600">IGNTU MP</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Prof. Om Prakash
+              </h3>
+              <p class="text-blue-600">IIT Patna</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Prof. R. S. Rao
+              </h3>
+              <p class="text-blue-600">NSUT Delhi</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Dr. Karan Singh
+              </h3>
+              <p class="text-blue-600">JNU New Delhi</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Dr. Anuj Kumar
+              </h3>
+              <p class="text-blue-600">MNNIT Prayagraj</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Dr. Vaibhav Prakash
+              </h3>
+              <p class="text-blue-600">MNNIT Prayagraj</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Dr. Ashish Shrivastava
+              </h3>
+              <p class="text-blue-600">GLA Mathura</p>
+            </div>
+
+            <!-- Continue with remaining members -->
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Dr. Ashutosh Bhatt
+              </h3>
+              <p class="text-blue-600">Uttarakhand Open University</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Dr. Awadhesh Kumar
+              </h3>
+              <p class="text-blue-600">KNIT Sultanpur</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Dr. Updendra Kumar
+              </h3>
+              <p class="text-blue-600">IET Lucknow</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Dr. Shashank Gupta
+              </h3>
+              <p class="text-blue-600">BIET Jhansi</p>
+            </div>
+
+            <!-- Add remaining members following the same pattern -->
+            <!-- Continue adding all remaining members -->
+          </div>
+        </div>
+
+        <!-- Publicity Committee -->
+        <div
+          class="section-container p-8"
+          data-aos="fade-up"
+          data-aos-delay="1100"
+        >
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-16 section-title"
+          >
+            Publicity Committee
+          </h2>
+          <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Members -->
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Prof. S. P. Singh
+              </h3>
+              <p class="text-blue-600">Convener</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Dr. Abhijeet Mishra
+              </h3>
+              <p class="text-blue-600">Member</p>
+            </div>
+
+            <!-- Add remaining members -->
+            <!-- ... -->
+          </div>
+        </div>
+
+        <!-- Organizing Committee -->
+        <div
+          class="section-container p-8"
+          data-aos="fade-up"
+          data-aos-delay="1200"
+        >
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-16 section-title"
+          >
+            Organizing Committee
+          </h2>
+          <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Prof. Shiva Prakash
+              </h3>
+              <p class="text-blue-600">Chairman</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Prof. S. P. Singh
+              </h3>
+              <p class="text-blue-600">Member</p>
+            </div>
+
+            <!-- Add remaining members -->
+            <!-- ... -->
+          </div>
+        </div>
+
+        <!-- Hospitality Committee -->
+        <div
+          class="section-container p-8"
+          data-aos="fade-up"
+          data-aos-delay="1300"
+        >
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-16 section-title"
+          >
+            Hospitality Committee
+          </h2>
+          <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Dr. D. S. Singh
+              </h3>
+              <p class="text-blue-600">Convener</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Dr. Jay Prakash
+              </h3>
+              <p class="text-blue-600">Member</p>
+            </div>
+
+            <!-- Add remaining members -->
+            <!-- ... -->
+          </div>
+        </div>
+
+        <!-- Transport Committee -->
+        <div
+          class="section-container p-8"
+          data-aos="fade-up"
+          data-aos-delay="1400"
+        >
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-16 section-title"
+          >
+            Transport Committee
+          </h2>
+          <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Dr. Rajan Mishra
+              </h3>
+              <p class="text-blue-600">Convener</p>
+            </div>
+
+            <div
+              class="committee-card bg-white rounded-lg shadow-sm p-6 text-center"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Mr. Vijay Kumar Tiwari
+              </h3>
+              <p class="text-blue-600">Member</p>
+            </div>
+
+            <!-- Add remaining members -->
+            <!-- ... -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="bg-gradient-to-b from-gray-50 to-gray-100 mt-16 py-20">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold text-gray-800 mb-8">
+          Need to get in touch?
+        </h2>
+        <p class="text-gray-600 mb-10 text-xl max-w-2xl mx-auto">
+          Contact our committee members for any queries regarding the conference
+        </p>
+        <a
+          href="mailto:contact@icetitsc2025.com"
+          class="bg-blue-600 text-white px-12 py-4 rounded-full hover:bg-blue-700 transition duration-300 inline-flex items-center space-x-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+        >
+          <i class="bx bx-envelope text-2xl"></i>
+          <span class="font-medium">Contact Us</span>
+        </a>
+      </div>
+    </div>
+
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100,
+        easing: "ease-out-cubic",
+      });
+    </script>
+  </body>
+</html>

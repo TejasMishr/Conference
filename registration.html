@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration - ICAIHC 2024</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .registration-header {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        color: white;
+        padding: 4rem 0;
+        margin-bottom: 3rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .registration-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("assets/pattern.png") repeat;
+        opacity: 0.1;
+      }
+
+      .registration-header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .fee-card {
+        transition: transform 0.3s ease;
+        height: 100%;
+      }
+      .fee-card:hover {
+        transform: translateY(-5px);
+      }
+      .table-responsive {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+      .registration-form {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+      .gradient-bg {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      }
+      @media (max-width: 768px) {
+        #mobile-menu.active {
+          transform: translateX(0);
+        }
+        #mobile-menu-overlay.active {
+          opacity: 1;
+          pointer-events: auto;
+        }
+        body.menu-open {
+          overflow: hidden;
+        }
+        .registration-header {
+          padding: 3rem 1rem;
+        }
+        .registration-header h1 {
+          font-size: 2rem;
+        }
+        .registration-form {
+          padding: 1.5rem;
+        }
+        .table-responsive {
+          margin: 0 -1rem;
+          border-radius: 0;
+        }
+        .fee-card {
+          margin-bottom: 1rem;
+        }
+        .container {
+          padding: 0 1.5rem;
+        }
+      }
+      .submit-btn {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        color: white;
+        padding: 1rem 2.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+      .form-label {
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 0.5rem;
+      }
+      .form-control,
+      .form-select {
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        transition: all 0.2s;
+      }
+      .form-control:focus,
+      .form-select:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+      .table-responsive {
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        margin-bottom: 3rem;
+      }
+      .table {
+        margin-bottom: 0;
+      }
+      .table-primary {
+        background: #1e3a8a;
+        color: white;
+      }
+      .table th {
+        font-weight: 600;
+        padding: 1rem;
+      }
+      .fee-card {
+        background: white;
+        border: none;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .fee-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      .card-title {
+        color: #1e3a8a;
+        font-weight: 600;
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+      }
+      .required-field::after {
+        content: "*";
+        color: #ef4444;
+        margin-left: 4px;
+      }
+      .form-section {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      .form-section:last-child {
+        border-bottom: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Add Navbar -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-lg z-50">
+      <div class="mx-auto flex justify-between items-center px-4 md:px-8 h-16">
+        <!-- Logo -->
+        <a href="/" class="flex items-center space-x-2">
+          <img
+            src="assets/logommm.jpg"
+            alt="ICETITSC Logo"
+            class="h-10 w-auto"
+          />
+          <span
+            class="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
+            >ICETITSC</span
+          >
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-button"
+          class="block md:hidden p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 z-50"
+          aria-label="Open Menu"
+          aria-expanded="false"
+          onclick="toggleMobileMenu()"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              id="menu-icon"
+              class="block"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+            <path
+              id="close-icon"
+              class="hidden"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+
+        <!-- Main Menu (Desktop) -->
+        <div class="hidden md:flex items-center space-x-1">
+          <a
+            href="/"
+            class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
+            >Home</a
+          >
+          <a
+            href="/about.html"
+            class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
+            >About</a
+          >
+          <a
+            href="/call-for-paper.html"
+            class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
+            >Call for Paper</a
+          >
+
+          <!-- Committee Dropdown -->
+          <div class="relative group">
+            <button
+              class="dropdown-trigger px-3 py-2 text-gray-700 hover:text-blue-600 flex items-center"
+              aria-expanded="false"
+              onclick="window.open('/committee-patrons.html', '_self')"
+            >
+              Committee
+              <svg
+                class="w-4 h-4 ml-1 transition-transform duration-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div
+              class="dropdown-content absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-lg opacity-0 invisible transform -translate-y-2 transition-all duration-200"
+            >
+              <a
+                href="/committee-patrons.html"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 rounded-lg"
+                >Patrons & Chairs</a
+              >
+              <a
+                href="/committee-technical.html"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 rounded-lg"
+                >Technical Committee</a
+              >
+            </div>
+          </div>
+
+          <!-- Register & Submit -->
+          <a
+            href="/registration.html"
+            class="ml-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
+            >Register</a
+          >
+          <a
+            href="/submit-paper.html"
+            class="ml-2 px-4 py-2 text-sm font-medium text-blue-600 border border-blue-600 rounded-lg"
+            >Submit Paper</a
+          >
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="fixed inset-y-0 right-0 w-64 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50"
+      >
+        <div class="flex flex-col h-full">
+          <div class="p-4 border-b">
+            <img
+              src="assets/logommm.jpg"
+              alt="ICETITSC Logo"
+              class="h-12 w-auto mx-auto"
+            />
+          </div>
+          <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+            <a
+              href="/"
+              class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded-lg"
+              >Home</a
+            >
+            <a
+              href="/about.html"
+              class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded-lg"
+              >About</a
+            >
+            <a
+              href="/call-for-paper.html"
+              class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded-lg"
+              >Call for Paper</a
+            >
+
+            <!-- Mobile Committee Dropdown -->
+            <div class="relative">
+              <button
+                class="w-full px-4 py-2 text-left text-gray-700 hover:bg-blue-50 rounded-lg flex items-center justify-between"
+                onclick="toggleMobileDropdown('mobile-committee-dropdown')"
+              >
+                Committee
+                <svg
+                  class="w-4 h-4 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </button>
+              <div
+                id="mobile-committee-dropdown"
+                class="hidden px-4 py-2 space-y-1"
+              >
+                <a
+                  href="/committee-patrons.html"
+                  class="block px-4 py-2 text-gray-600 hover:bg-blue-50 rounded-lg"
+                  >Patrons & Chairs</a
+                >
+                <a
+                  href="/committee-technical.html"
+                  class="block px-4 py-2 text-gray-600 hover:bg-blue-50 rounded-lg"
+                  >Technical Committee</a
+                >
+              </div>
+            </div>
+          </nav>
+          <div class="p-4 border-t space-y-2">
+            <a
+              href="/registration.html"
+              class="block w-full px-4 py-2 text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+              >Register</a
+            >
+            <a
+              href="/submit-paper.html"
+              class="block w-full px-4 py-2 text-center text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50"
+              >Submit Paper</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Overlay -->
+      <div
+        id="mobile-menu-overlay"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out md:hidden z-40"
+        onclick="toggleMobileMenu()"
+      ></div>
+    </nav>
+
+    <!-- Add padding to account for fixed navbar -->
+    <div class="pt-16">
+      <!-- Header Section -->
+      <div class="registration-header text-center">
+        <h1>Registration</h1>
+        <p class="lead">
+          International Conference on Artificial Intelligence in Healthcare
+          (ICAIHC) 2024
+        </p>
+      </div>
+
+      <div class="container mb-5">
+        <!-- Registration Fees Section -->
+        <section class="mb-5">
+          <h2 class="text-center mb-4">Registration Fees</h2>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="table-primary">
+                <tr>
+                  <th rowspan="2" class="align-middle">Category</th>
+                  <th colspan="2" class="text-center">Early Registration</th>
+                  <th colspan="2" class="text-center">Late Registration</th>
+                </tr>
+                <tr>
+                  <th class="text-center">Indian Delegates</th>
+                  <th class="text-center">Foreign Delegates</th>
+                  <th class="text-center">Indian Delegates</th>
+                  <th class="text-center">Foreign Delegates</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Students</td>
+                  <td class="text-center">Rs. 4,500</td>
+                  <td class="text-center">USD 100</td>
+                  <td class="text-center">Rs. 5,000</td>
+                  <td class="text-center">USD 120</td>
+                </tr>
+                <tr>
+                  <td>Faculty</td>
+                  <td class="text-center">Rs. 5,500</td>
+                  <td class="text-center">USD 150</td>
+                  <td class="text-center">Rs. 6,000</td>
+                  <td class="text-center">USD 170</td>
+                </tr>
+                <tr>
+                  <td>Industry Persons</td>
+                  <td class="text-center">Rs. 7,500</td>
+                  <td class="text-center">USD 200</td>
+                  <td class="text-center">Rs. 8,000</td>
+                  <td class="text-center">USD 220</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Registration Form Section -->
+        <section class="registration-form">
+          <h2 class="text-center mb-4">Registration Form</h2>
+          <form>
+            <!-- Personal Information -->
+            <div class="form-section">
+              <h4 class="mb-3 text-gray-700">Personal Information</h4>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="firstName" class="form-label required-field"
+                    >First Name</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="firstName"
+                    required
+                    placeholder="Enter your first name"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="lastName" class="form-label required-field"
+                    >Last Name</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lastName"
+                    required
+                    placeholder="Enter your last name"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="form-section">
+              <h4 class="mb-3 text-gray-700">Contact Information</h4>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="email" class="form-label required-field"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    required
+                    placeholder="Enter your email address"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="phone" class="form-label required-field"
+                    >Phone Number</label
+                  >
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="phone"
+                    required
+                    placeholder="Enter your phone number"
+                  />
+                </div>
+                <div class="col-12">
+                  <label for="address" class="form-label required-field"
+                    >Address</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="address"
+                    rows="3"
+                    required
+                    placeholder="Enter your complete address"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Professional Information -->
+            <div class="form-section">
+              <h4 class="mb-3 text-gray-700">Professional Information</h4>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="institution" class="form-label required-field"
+                    >Institution/Organization</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="institution"
+                    required
+                    placeholder="Enter your institution name"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="paperID" class="form-label"
+                    >Paper ID (if applicable)</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="paperID"
+                    placeholder="Enter your paper ID"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="category" class="form-label required-field"
+                    >Registration Category</label
+                  >
+                  <select class="form-select" id="category" required>
+                    <option value="">Select Category</option>
+                    <option value="student">Student</option>
+                    <option value="faculty">Faculty</option>
+                    <option value="industry">Industry Person</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="nationality" class="form-label required-field"
+                    >Nationality</label
+                  >
+                  <select class="form-select" id="nationality" required>
+                    <option value="">Select Nationality</option>
+                    <option value="indian">Indian</option>
+                    <option value="foreign">Foreign</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center mt-4">
+              <button type="submit" class="submit-btn">
+                Submit Registration
+              </button>
+              <p class="mt-3 text-sm text-gray-600">
+                By submitting this form, you agree to our terms and conditions
+              </p>
+            </div>
+          </form>
+        </section>
+
+        <!-- Payment Information -->
+        <section class="mt-5">
+          <h2 class="text-center mb-4">Payment Information</h2>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="fee-card h-100">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <i class="fas fa-university me-2"></i>Bank Transfer Details
+                  </h5>
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="card-text mb-3">
+                      <strong class="text-gray-700">Bank Name:</strong> [Bank
+                      Name]<br />
+                      <strong class="text-gray-700">Account Number:</strong>
+                      XXXXXXXXXXXXXXX<br />
+                      <strong class="text-gray-700">IFSC Code:</strong>
+                      XXXXXXXXXXXXXX<br />
+                      <strong class="text-gray-700">Account Holder:</strong>
+                      ICAIHC 2024
+                    </p>
+                    <div class="mt-3 p-3 bg-blue-50 rounded-lg">
+                      <p class="text-sm text-blue-800 mb-0">
+                        <i class="fas fa-info-circle me-2"></i>Please save the
+                        transaction details for future reference
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="fee-card h-100">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <i class="fas fa-info-circle me-2"></i>Important Notes
+                  </h5>
+                  <ul class="card-text list-unstyled">
+                    <li class="mb-3 p-3 bg-gray-50 rounded-lg">
+                      <i class="fas fa-check-circle text-green-600 me-2"></i>
+                      Registration fee includes conference kit, lunch, and
+                      refreshments
+                    </li>
+                    <li class="mb-3 p-3 bg-gray-50 rounded-lg">
+                      <i class="fas fa-calendar-alt text-blue-600 me-2"></i>
+                      Early registration deadline: [Date]
+                    </li>
+                    <li class="mb-3 p-3 bg-gray-50 rounded-lg">
+                      <i class="fas fa-receipt text-yellow-600 me-2"></i>
+                      Please keep payment receipt for verification
+                    </li>
+                    <li class="p-3 bg-gray-50 rounded-lg">
+                      <i class="fas fa-envelope text-purple-600 me-2"></i>
+                      For any queries, contact: support@icaihc2024.org
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Footer Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Copy the entire navigation script from index.html here
+      // Store references to frequently accessed elements
+      const mobileMenu = {
+        menu: null,
+        button: null,
+        overlay: null,
+        menuIcon: null,
+        closeIcon: null,
+        dropdowns: new Map(),
+        isOpen: false,
+      };
+
+      // Initialize mobile menu elements and event listeners
+      document.addEventListener("DOMContentLoaded", function () {
+        try {
+          initializeMobileMenu();
+          initializeDesktopDropdowns();
+          setupResizeHandler();
+          setupKeyboardNavigation();
+        } catch (error) {
+          console.error("Error initializing navigation:", error);
+        }
+      });
+
+      // ... copy all the remaining functions from index.html ...
+    </script>
+  </body>
+</html>

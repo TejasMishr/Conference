@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Author Guidelines - ICAET 2024</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+      .guidelines-header {
+        background: linear-gradient(135deg, #0d6efd 0%, #0a4da3 100%);
+        color: white;
+        padding: 3rem 0;
+        margin-bottom: 2rem;
+      }
+
+      .section-title {
+        color: #0d6efd;
+        border-bottom: 2px solid #0d6efd;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .download-card {
+        transition: transform 0.3s ease;
+        margin-bottom: 1rem;
+      }
+
+      .download-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .guideline-item {
+        padding: 1rem;
+        border-left: 3px solid #0d6efd;
+        margin-bottom: 1rem;
+        background-color: #f8f9fa;
+      }
+
+      .warning-text {
+        color: #dc3545;
+        font-weight: 500;
+      }
+
+      /* Add navbar styles */
+      .group:hover .group-hover\:opacity-100 {
+        animation: fadeIn 0.2s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+    <script>
+      // Store references to frequently accessed elements
+      const mobileMenu = {
+        menu: null,
+        button: null,
+        overlay: null,
+        menuIcon: null,
+        closeIcon: null,
+        dropdowns: new Map(),
+        isOpen: false,
+      };
+
+      // Initialize mobile menu elements and event listeners
+      document.addEventListener("DOMContentLoaded", function () {
+        try {
+          initializeMobileMenu();
+          initializeDesktopDropdowns();
+          setupResizeHandler();
+          setupKeyboardNavigation();
+        } catch (error) {
+          console.error("Error initializing navigation:", error);
+        }
+      });
+
+      function initializeMobileMenu() {
+        try {
+          // Cache DOM elements
+          mobileMenu.menu = document.getElementById("mobile-menu");
+          mobileMenu.button = document.getElementById("mobile-menu-button");
+          mobileMenu.overlay = document.getElementById("mobile-menu-overlay");
+          mobileMenu.menuIcon = document.getElementById("menu-icon");
+          mobileMenu.closeIcon = document.getElementById("close-icon");
+
+          if (!mobileMenu.menu || !mobileMenu.button || !mobileMenu.overlay) {
+            throw new Error("Required mobile menu elements not found");
+          }
+
+          // Add click event listeners
+          mobileMenu.button.addEventListener("click", (e) => {
+            e.stopPropagation(); // Prevent event bubbling
+            toggleMobileMenu();
+          });
+
+          mobileMenu.overlay.addEventListener("click", closeMobileMenu);
+
+          // Close menu when clicking outside
+          document.addEventListener("click", function (event) {
+            if (
+              mobileMenu.isOpen &&
+              !mobileMenu.menu.contains(event.target) &&
+              !mobileMenu.button.contains(event.target)
+            ) {
+              closeMobileMenu();
+            }
+          });
+
+          // Handle touch events
+          document.addEventListener("touchstart", handleTouchStart, {
+            passive: true,
+          });
+          document.addEventListener("touchmove", handleTouchMove, {
+            passive: true,
+          });
+        } catch (error) {
+          console.error("Error initializing mobile menu:", error);
+        }
+      }
+
+      function toggleMobileMenu() {
+        try {
+          const { menu, overlay, menuIcon, closeIcon } = mobileMenu;
+          const body = document.body;
+
+          // Toggle menu state
+          mobileMenu.isOpen = !mobileMenu.isOpen;
+
+          // Toggle classes with error checking
+          if (menu && overlay && menuIcon && closeIcon) {
+            if (mobileMenu.isOpen) {
+              // Opening menu
+              menu.classList.remove("translate-x-full");
+              menu.classList.add("translate-x-0");
+              overlay.classList.remove("opacity-0", "pointer-events-none");
+              menuIcon.classList.add("hidden");
+              closeIcon.classList.remove("hidden");
+              body.classList.add("overflow-hidden");
+            } else {
+              // Closing menu
+              menu.classList.remove("translate-x-0");
+              menu.classList.add("translate-x-full");
+              overlay.classList.add("opacity-0", "pointer-events-none");
+              menuIcon.classList.remove("hidden");
+              closeIcon.classList.add("hidden");
+              body.classList.remove("overflow-hidden");
+            }
+
+            // Update ARIA attributes
+            mobileMenu.button.setAttribute("aria-expanded", mobileMenu.isOpen);
+
+            // Close all open dropdowns when closing menu
+            if (!mobileMenu.isOpen) {
+              closeAllMobileDropdowns();
+            }
+          }
+        } catch (error) {
+          console.error("Error toggling mobile menu:", error);
+        }
+      }
+
+      function closeMobileMenu() {
+        try {
+          if (mobileMenu.isOpen) {
+            const { menu, overlay, menuIcon, closeIcon } = mobileMenu;
+            const body = document.body;
+
+            mobileMenu.isOpen = false;
+
+            menu?.classList.add("translate-x-full");
+            overlay?.classList.add("opacity-0", "pointer-events-none");
+            menuIcon?.classList.remove("hidden");
+            closeIcon?.classList.add("hidden");
+            body?.classList.remove("overflow-hidden");
+
+            mobileMenu.button.setAttribute("aria-expanded", "false");
+            closeAllMobileDropdowns();
+          }
+        } catch (error) {
+          console.error("Error closing mobile menu:", error);
+        }
+      }
+
+      function toggleMobileDropdown(dropdownId) {
+        try {
+          const dropdown = document.getElementById(dropdownId);
+          const button = dropdown?.previousElementSibling;
+          const icon = button?.querySelector("svg");
+
+          if (!dropdown || !button || !icon) {
+            throw new Error(
+              `Dropdown elements not found for ID: ${dropdownId}`
+            );
+          }
+
+          const isOpen = !dropdown.classList.contains("hidden");
+
+          // Close other open dropdowns
+          closeAllMobileDropdowns(dropdownId);
+
+          // Toggle current dropdown
+          dropdown.classList.toggle("hidden");
+          icon.style.transform = isOpen ? "rotate(0deg)" : "rotate(180deg)";
+          button.setAttribute("aria-expanded", !isOpen);
+
+          // Store dropdown state
+          mobileMenu.dropdowns.set(dropdownId, !isOpen);
+        } catch (error) {
+          console.error("Error toggling mobile dropdown:", error);
+        }
+      }
+
+      function closeAllMobileDropdowns(exceptId = null) {
+        try {
+          mobileMenu.dropdowns.forEach((isOpen, dropdownId) => {
+            if (dropdownId !== exceptId && isOpen) {
+              const dropdown = document.getElementById(dropdownId);
+              const button = dropdown?.previousElementSibling;
+              const icon = button?.querySelector("svg");
+
+              if (dropdown && button && icon) {
+                dropdown.classList.add("hidden");
+                icon.style.transform = "rotate(0deg)";
+                button.setAttribute("aria-expanded", "false");
+                mobileMenu.dropdowns.set(dropdownId, false);
+              }
+            }
+          });
+        } catch (error) {
+          console.error("Error closing mobile dropdowns:", error);
+        }
+      }
+
+      function initializeDesktopDropdowns() {
+        try {
+          const dropdownButtons =
+            document.querySelectorAll(".dropdown-trigger");
+
+          dropdownButtons.forEach((button) => {
+            const dropdown = button.nextElementSibling;
+            if (!dropdown) return;
+
+            let timeoutId;
+
+            // Show dropdown on hover/focus
+            const showDropdown = () => {
+              clearTimeout(timeoutId);
+              dropdown.classList.remove(
+                "opacity-0",
+                "invisible",
+                "-translate-y-2"
+              );
+              dropdown.classList.add("opacity-100", "visible", "translate-y-0");
+              button.setAttribute("aria-expanded", "true");
+            };
+
+            // Hide dropdown
+            const hideDropdown = () => {
+              timeoutId = setTimeout(() => {
+                dropdown.classList.add(
+                  "opacity-0",
+                  "invisible",
+                  "-translate-y-2"
+                );
+                dropdown.classList.remove(
+                  "opacity-100",
+                  "visible",
+                  "translate-y-0"
+                );
+                button.setAttribute("aria-expanded", "false");
+              }, 150);
+            };
+
+            // Mouse events
+            button.parentElement.addEventListener("mouseenter", showDropdown);
+            button.parentElement.addEventListener("mouseleave", hideDropdown);
+
+            // Keyboard/Focus events
+            button.addEventListener("focus", showDropdown);
+            button.addEventListener("blur", hideDropdown);
+          });
+        } catch (error) {
+          console.error("Error initializing desktop dropdowns:", error);
+        }
+      }
+
+      function setupResizeHandler() {
+        let resizeTimeout;
+
+        window.addEventListener("resize", () => {
+          // Debounce resize handler
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(() => {
+            try {
+              if (window.innerWidth >= 768) {
+                // md breakpoint
+                closeMobileMenu();
+              }
+            } catch (error) {
+              console.error("Error handling window resize:", error);
+            }
+          }, 100);
+        });
+      }
+
+      function setupKeyboardNavigation() {
+        try {
+          // Close mobile menu on Escape key
+          document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+              closeMobileMenu();
+            }
+          });
+
+          // Add keyboard navigation for dropdowns
+          const dropdownButtons =
+            document.querySelectorAll(".dropdown-trigger");
+          dropdownButtons.forEach((button) => {
+            button.addEventListener("keydown", (event) => {
+              const dropdown = button.nextElementSibling;
+              if (!dropdown) return;
+
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                dropdown.classList.toggle("hidden");
+                button.setAttribute(
+                  "aria-expanded",
+                  dropdown.classList.contains("hidden") ? "false" : "true"
+                );
+              }
+            });
+          });
+        } catch (error) {
+          console.error("Error setting up keyboard navigation:", error);
+        }
+      }
+
+      // Handle committee link clicks
+      function handleCommitteeClick(event, path) {
+        event.preventDefault();
+        window.location.href = path;
+      }
+
+      // Initialize AOS
+      document.addEventListener("DOMContentLoaded", function () {
+        AOS.init();
+      });
+
+      // Add loading animation
+      document.addEventListener("DOMContentLoaded", function () {
+        document.body.classList.add("loaded");
+      });
+
+      // Add intersection observer for better performance
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("loaded");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+        }
+      );
+
+      document.querySelectorAll("[data-aos]").forEach((element) => {
+        element.classList.add("loading");
+        observer.observe(element);
+      });
+
+      // Improve scroll performance
+      let scrollTimeout;
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!scrollTimeout) {
+            window.requestAnimationFrame(() => {
+              // Update scroll-based elements
+              const scrollButton = document.getElementById("scroll-top");
+              if (document.documentElement.scrollTop > 100) {
+                scrollButton.classList.remove("hidden");
+              } else {
+                scrollButton.classList.add("hidden");
+              }
+              scrollTimeout = null;
+            });
+            scrollTimeout = true;
+          }
+        },
+        { passive: true }
+      );
+
+      // Add touch gesture support
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      function handleTouchStart(event) {
+        touchStartX = event.touches[0].clientX;
+      }
+
+      function handleTouchMove(event) {
+        touchEndX = event.touches[0].clientX;
+        handleSwipe();
+      }
+
+      function handleSwipe() {
+        const swipeThreshold = 50;
+        const swipeDistance = touchEndX - touchStartX;
+
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+          if (mobileMenu.isOpen && swipeDistance > 0) {
+            // Swipe right to close
+            closeMobileMenu();
+          } else if (!mobileMenu.isOpen && swipeDistance < 0) {
+            // Swipe left to open
+            toggleMobileMenu();
+          }
+        }
+      }
+
+      // Add this script for better image loading
+      document.addEventListener("DOMContentLoaded", function () {
+        const heroSection = document.querySelector(".hero-section");
+        const img = new Image();
+        img.src = "/assets/a61.jpg";
+        img.onload = function () {
+          heroSection.classList.add("loaded");
+        };
+      });
+    </script>
+  </head>
+  <body>
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-lg z-50">
+      <div class="mx-auto flex justify-between items-center px-4 md:px-8 h-16">
+        <!-- Logo -->
+        <a href="/" class="flex items-center space-x-2">
+          <img
+            src="assets/logommm.jpg"
+            alt="ICETITSC Logo"
+            class="h-10 w-auto"
+          />
+          <span
+            class="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
+            >ICETITSC</span
+          >
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-button"
+          class="block md:hidden p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 z-50"
+          aria-label="Open Menu"
+          aria-expanded="false"
+          onclick="toggleMobileMenu()"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              id="menu-icon"
+              class="block"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+            <path
+              id="close-icon"
+              class="hidden"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+
+        <!-- Main Menu (Desktop) -->
+        <div class="hidden md:flex items-center space-x-1">
+          <a
+            href="/"
+            class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
+            >Home</a
+          >
+          <a
+            href="/about.html"
+            class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
+            >About</a
+          >
+          <a
+            href="/call-for-paper.html"
+            class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
+            >Call for Paper</a
+          >
+
+          <!-- Committee Dropdown -->
+          <div class="relative group">
+            <button
+              class="dropdown-trigger px-3 py-2 text-gray-700 hover:text-blue-600 flex items-center"
+              aria-expanded="false"
+              onclick="window.open('/committee-patrons.html', '_self')"
+            >
+              Committee
+              <svg
+                class="w-4 h-4 ml-1 transition-transform duration-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div
+              class="dropdown-content absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-lg opacity-0 invisible transform -translate-y-2 transition-all duration-200"
+            >
+              <a
+                href="/committee-patrons.html"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 rounded-lg"
+                >Patrons & Chairs</a
+              >
+              <a
+                href="/committee-technical.html"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 rounded-lg"
+                >Technical Committee</a
+              >
+            </div>
+          </div>
+
+          <!-- Register & Submit -->
+          <a
+            href="/registration.html"
+            class="ml-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
+            >Register</a
+          >
+          <a
+            href="/submit-paper.html"
+            class="ml-2 px-4 py-2 text-sm font-medium text-blue-600 border border-blue-600 rounded-lg"
+            >Submit Paper</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <div class="pt-16">
+      <div class="guidelines-header">
+        <div class="container">
+          <h1 class="display-4">Author's Guidelines</h1>
+          <p class="lead">
+            Essential information for paper submission and preparation
+          </p>
+        </div>
+      </div>
+
+      <div class="container mb-5">
+        <!-- Important Notice -->
+        <div class="alert alert-primary mb-4" role="alert">
+          <i class="fas fa-info-circle me-2"></i>
+          At least one author of an accepted paper must register and present
+          his/her paper in the conference.
+        </div>
+
+        <!-- IEEE Templates Section -->
+        <section class="mb-5">
+          <h2 class="section-title">IEEE Paper Templates</h2>
+          <div class="row">
+            <div class="col-md-6 col-lg-3">
+              <div class="card download-card">
+                <div class="card-body text-center">
+                  <i class="fas fa-file-word fa-3x text-primary mb-3"></i>
+                  <h5 class="card-title">Word Template</h5>
+                  <a href="#" class="btn btn-outline-primary">Download</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="card download-card">
+                <div class="card-body text-center">
+                  <i class="fas fa-file-alt fa-3x text-primary mb-3"></i>
+                  <h5 class="card-title">LaTeX Instructions</h5>
+                  <a href="#" class="btn btn-outline-primary">Download</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="card download-card">
+                <div class="card-body text-center">
+                  <i class="fas fa-file-archive fa-3x text-primary mb-3"></i>
+                  <h5 class="card-title">LaTeX Template</h5>
+                  <a href="#" class="btn btn-outline-primary">Download</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="card download-card">
+                <div class="card-body text-center">
+                  <i class="fas fa-book fa-3x text-primary mb-3"></i>
+                  <h5 class="card-title">Bibliography Files</h5>
+                  <a href="#" class="btn btn-outline-primary">Download</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Manuscript Preparation -->
+        <section class="mb-5">
+          <h2 class="section-title">Manuscript Preparation Guidelines</h2>
+          <div class="guideline-item">
+            <h5><i class="fas fa-file-alt me-2"></i>Format Requirements</h5>
+            <p>
+              The manuscript should be prepared in IEEE format using MS WORD
+              and/or LaTeX template.
+            </p>
+          </div>
+          <div class="guideline-item">
+            <h5><i class="fas fa-image me-2"></i>Figure Requirements</h5>
+            <ul>
+              <li>
+                Figures/graphs/plots must be of good resolution (600 dpi or
+                more)
+              </li>
+              <li>Tables must not be in pictorial format</li>
+              <li>
+                Text in figures should be clearly visible and properly sized
+              </li>
+            </ul>
+          </div>
+          <div class="guideline-item">
+            <h5><i class="fas fa-user me-2"></i>Author Information</h5>
+            <ul>
+              <li>
+                Do not use social/academic titles (Mr., Ms., Dr., Prof., etc.)
+              </li>
+              <li>
+                Include full address, affiliation, and email of all authors
+              </li>
+              <li>Specify a corresponding author with email ID</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Submission Requirements -->
+        <section class="mb-5">
+          <h2 class="section-title">Submission Requirements</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <i class="fas fa-check-circle text-success me-2"></i>Page
+                    Limit
+                  </h5>
+                  <p class="card-text">
+                    Maximum 6 pages in double-format. Extra page charges apply
+                    beyond 6 pages.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <i class="fas fa-ban text-danger me-2"></i>Plagiarism Limit
+                  </h5>
+                  <p class="card-text">
+                    Similarity index must be below 15% for acceptance.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Plagiarism Policy -->
+        <section>
+          <h2 class="section-title">Plagiarism Policy</h2>
+          <div class="alert alert-warning">
+            <h5>
+              <i class="fas fa-exclamation-triangle me-2"></i>Important Notice
+            </h5>
+            <p>
+              Authors are responsible for ensuring their work is original and
+              unpublished. Papers found to be plagiarized will be rejected at
+              any stage of review.
+            </p>
+          </div>
+          <p>
+            For detailed information on IEEE's plagiarism policy, visit:
+            <a
+              href="http://www.ieee.org/publications/rights/plagiarism/plagiarism.html"
+              target="_blank"
+            >
+              IEEE Plagiarism Guidelines
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
