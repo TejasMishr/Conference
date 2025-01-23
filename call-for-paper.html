@@ -24,10 +24,16 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="script.js" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/lucide-icons@0.359.0/dist/umd/lucide-icons.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
     <style>
       :root {
         --primary-color: #1a237e;
         --secondary-color: #0d47a1;
+        --primary-color-rgb: 26, 35, 126;
       }
 
       .hero-section {
@@ -101,6 +107,266 @@
 
       html {
         scroll-behavior: smooth;
+      }
+
+      .hero-banner {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        padding: 6rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-banner::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("assets/images/pattern.png");
+        opacity: 0.1;
+      }
+
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+      }
+
+      .timeline-item {
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+      }
+
+      .timeline-item:hover {
+        transform: translateY(-3px);
+      }
+
+      .track-card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .track-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .stats-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        padding: 3rem 0;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 2rem;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .cta-section {
+        background: linear-gradient(
+          45deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        padding: 4rem 0;
+        text-align: center;
+        margin-top: 4rem;
+      }
+
+      .info-item {
+        transition: transform 0.3s ease;
+      }
+
+      .info-item:hover {
+        transform: translateX(5px);
+      }
+
+      .info-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(var(--primary-color-rgb), 0.1);
+        border-radius: 12px;
+      }
+
+      .sticky-top {
+        z-index: 1020;
+      }
+
+      .guideline-item {
+        background: rgba(var(--primary-color-rgb), 0.03);
+        padding: 1rem;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+      }
+
+      .guideline-item:hover {
+        transform: translateX(5px);
+        background: rgba(var(--primary-color-rgb), 0.05);
+      }
+
+      .guideline-item i {
+        font-size: 1.2rem;
+      }
+
+      .guidelines-list {
+        border-left: 4px solid var(--primary-color);
+        padding-left: 1.5rem;
+      }
+
+      .info-panel {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        position: sticky;
+        top: 100px;
+      }
+
+      .info-section {
+        margin-bottom: 2rem;
+      }
+
+      .info-section-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .info-section-title::before {
+        content: "";
+        width: 4px;
+        height: 24px;
+        background: var(--primary-color);
+        border-radius: 2px;
+        display: inline-block;
+      }
+
+      .info-item {
+        padding: 1rem;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(var(--primary-color-rgb), 0.08);
+        margin-bottom: 1rem;
+      }
+
+      .info-item:hover {
+        transform: translateX(5px);
+        background: rgba(var(--primary-color-rgb), 0.02);
+        border-color: rgba(var(--primary-color-rgb), 0.12);
+      }
+
+      .info-icon {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(var(--primary-color-rgb), 0.08);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .info-item:hover .info-icon {
+        background: rgba(var(--primary-color-rgb), 0.12);
+      }
+
+      .info-content h5 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        color: #2d3748;
+      }
+
+      .info-content p {
+        font-size: 0.9rem;
+        color: #718096;
+      }
+
+      .divider {
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          rgba(var(--primary-color-rgb), 0.1),
+          transparent
+        );
+        margin: 2rem 0;
+      }
+
+      .submit-btn-wrapper {
+        padding: 0.5rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        border-radius: 14px;
+        margin-top: 1rem;
+      }
+
+      .submit-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        font-weight: 500;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+        text-decoration: none;
+      }
+
+      .submit-btn:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+        color: white;
+      }
+
+      .submit-btn i {
+        transition: transform 0.3s ease;
+      }
+
+      .submit-btn:hover i {
+        transform: translateX(5px);
       }
     </style>
 
@@ -521,31 +787,78 @@
 
     <div class="pt-16">
       <!-- Hero Section -->
-      <section class="bg-gray-50 pt-[130px] container">
-        <div class="text-center">
-          <h1 class="display-4 mb-4">Call for Papers</h1>
-          <h2 class="h3 mb-4">ICICAT 2024</h2>
-          <p class="lead">
-            Second International Conference on IoT, Communication and Automation
-            Technology
-          </p>
-          <p class="mb-4">23-24 November 2024 | Gorakhpur, India</p>
-          <a
-            href="https://cmt3.research.microsoft.com"
-            class="btn btn-light btn-lg bg-blue-600 text-white hover:bg-blue-700"
-            >Submit Paper</a
-          >
+      <div class="hero-banner">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-8 mx-auto text-center">
+              <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">
+                Call for Papers
+              </h1>
+              <h2 class="h3 mb-4" data-aos="fade-up" data-aos-delay="100">
+                ICICAT 2024
+              </h2>
+              <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200">
+                Second International Conference on IoT, Communication and
+                Automation Technology
+              </p>
+              <div
+                class="d-flex justify-content-center gap-3"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
+                <a
+                  href="https://cmt3.research.microsoft.com"
+                  class="btn btn-light btn-lg"
+                >
+                  Submit Paper <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+                <a
+                  href="#conference-tracks"
+                  class="btn btn-outline-light btn-lg"
+                >
+                  View Tracks <i class="fas fa-list ms-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
+
+      <!-- Add stats section -->
+      <div class="container">
+        <div class="stats-container" data-aos="fade-up">
+          <div class="stat-item">
+            <i class="fas fa-users mb-3 fa-2x text-primary"></i>
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Expected Attendees</div>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-globe mb-3 fa-2x text-primary"></i>
+            <div class="stat-number">30+</div>
+            <div class="stat-label">Countries</div>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-file-alt mb-3 fa-2x text-primary"></i>
+            <div class="stat-number">200+</div>
+            <div class="stat-label">Papers Expected</div>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-microphone mb-3 fa-2x text-primary"></i>
+            <div class="stat-number">25+</div>
+            <div class="stat-label">Speakers</div>
+          </div>
+        </div>
+      </div>
 
       <!-- Main Content -->
-      <section class="section-padding">
+      <section class="section-padding bg-light">
         <div class="container">
           <div class="row">
-            <div class="col-lg-8 mx-auto">
-              <div class="highlight-box">
-                <h3 class="h4 mb-3">Conference Overview</h3>
-                <p>
+            <!-- Left Column - Overview -->
+            <div class="col-lg-8">
+              <div class="track-card" data-aos="fade-up">
+                <h3 class="h4 mb-4">Conference Overview</h3>
+                <p class="lead text-muted">
                   The Second International Conference on IoT, Communication and
                   Automation Technology (ICICAT-2024) will be organized by
                   Buddha Institute of Technology, Gorakhpur, India in Technical
@@ -553,74 +866,231 @@
                 </p>
               </div>
 
-              <div class="mb-5">
-                <h3 class="h4 mb-4">Conference Objectives</h3>
-                <p>
-                  ICICAT-2024 aims to serve as a premier forum for researchers,
-                  developers, and educators working in the areas of:
-                </p>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Internet of Things (IoT)</li>
-                  <li class="list-group-item">Communication Technologies</li>
-                  <li class="list-group-item">Automation Technologies</li>
-                </ul>
-              </div>
-
-              <div class="mb-5">
-                <h3 class="h4 mb-4">Publication</h3>
-                <div class="card">
-                  <div class="card-body">
-                    <p>
-                      All accepted and presented papers will be submitted for
-                      inclusion into IEEE Xplore digital library, subject to
-                      meeting IEEE Xplore's scope and quality requirements.
+              <div class="track-card" data-aos="fade-up">
+                <h3 class="h4 mb-4">Paper Submission Guidelines</h3>
+                <div class="guidelines-list">
+                  <div class="guideline-item d-flex align-items-start mb-3">
+                    <i class="fas fa-check-circle text-success mt-1 me-3"></i>
+                    <p class="mb-0">
+                      Authors are requested to adhere to the IEEE conference
+                      paper format and it must be written in English. Draft
+                      version of papers should be submitted for review before
+                      the submission deadline.
                     </p>
                   </div>
-                </div>
-              </div>
-
-              <div class="mb-5">
-                <h3 class="h4 mb-4">Important Information</h3>
-                <div class="row g-4">
-                  <div class="col-md-4">
-                    <div class="icon-box">
-                      <i class="fas fa-calendar-alt"></i>
-                      <h4 class="h5">Conference Dates</h4>
-                      <p>23-24 November 2024</p>
-                    </div>
+                  <div class="guideline-item d-flex align-items-start mb-3">
+                    <i class="fas fa-file-alt text-primary mt-1 me-3"></i>
+                    <p class="mb-0">
+                      The maximum number of pages including figures and
+                      references are allowed in PDF format is six (6).
+                    </p>
                   </div>
-                  <div class="col-md-4">
-                    <div class="icon-box">
-                      <i class="fas fa-map-marker-alt"></i>
-                      <h4 class="h5">Location</h4>
-                      <p>Gorakhpur, India</p>
-                    </div>
+                  <div class="guideline-item d-flex align-items-start mb-3">
+                    <i class="fas fa-weight-hanging text-warning mt-1 me-3"></i>
+                    <p class="mb-0">
+                      Total file size of the paper must not exceed 10 MB.
+                    </p>
                   </div>
-                  <div class="col-md-4">
-                    <div class="icon-box">
-                      <i class="fas fa-paper-plane"></i>
-                      <h4 class="h5">Submission</h4>
-                      <p>Via Microsoft CMT</p>
-                    </div>
+                  <div class="mt-4">
+                    <a href="#" class="btn btn-outline-primary">
+                      <i class="fas fa-download me-2"></i>Download IEEE Template
+                    </a>
                   </div>
                 </div>
               </div>
 
-              <div class="text-center">
-                <a
-                  href="https://cmt3.research.microsoft.com"
-                  class="btn btn-primary btn-lg"
-                >
-                  Submit Your Paper
-                  <i class="fas fa-arrow-right ms-2"></i>
-                </a>
+              <div class="track-card" data-aos="fade-up">
+                <h3 class="h4 mb-4">Publication Opportunities</h3>
+                <div class="d-flex align-items-center mb-4">
+                  <img
+                    src="assets/images/ieee-logo.png"
+                    alt="IEEE Logo"
+                    class="me-4"
+                    style="height: 60px"
+                  />
+                  <p class="mb-0">
+                    All accepted and presented papers will be submitted for
+                    inclusion into IEEE Xplore digital library, subject to
+                    meeting IEEE Xplore's scope and quality requirements.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column - Important Information -->
+            <div class="col-lg-4">
+              <div class="info-panel" data-aos="fade-left">
+                <div class="info-section">
+                  <h3 class="info-section-title">Important Information</h3>
+
+                  <div class="info-item d-flex align-items-center">
+                    <div class="info-icon me-3">
+                      <i
+                        data-lucide="calendar-days"
+                        class="text-primary"
+                        style="font-size: 20px"
+                      ></i>
+                    </div>
+                    <div class="info-content">
+                      <h5>Conference Dates</h5>
+                      <p class="mb-0">23-24 November 2024</p>
+                    </div>
+                  </div>
+
+                  <div class="info-item d-flex align-items-center">
+                    <div class="info-icon me-3">
+                      <i
+                        data-lucide="map-pin"
+                        class="text-primary"
+                        style="font-size: 20px"
+                      ></i>
+                    </div>
+                    <div class="info-content">
+                      <h5>Location</h5>
+                      <p class="mb-0">Gorakhpur, India</p>
+                    </div>
+                  </div>
+
+                  <div class="info-item d-flex align-items-center">
+                    <div class="info-icon me-3">
+                      <i
+                        data-lucide="send"
+                        class="text-primary"
+                        style="font-size: 20px"
+                      ></i>
+                    </div>
+                    <div class="info-content">
+                      <h5>Submission</h5>
+                      <p class="mb-0">Via Microsoft CMT</p>
+                    </div>
+                  </div>
+
+                  <div class="info-item d-flex align-items-center">
+                    <div class="info-icon me-3">
+                      <i
+                        data-lucide="users"
+                        class="text-primary"
+                        style="font-size: 20px"
+                      ></i>
+                    </div>
+                    <div class="info-content">
+                      <h5>Expected Attendees</h5>
+                      <p class="mb-0">500+ Researchers</p>
+                    </div>
+                  </div>
+
+                  <div class="info-item d-flex align-items-center">
+                    <div class="info-icon me-3">
+                      <i
+                        data-lucide="globe"
+                        class="text-primary"
+                        style="font-size: 20px"
+                      ></i>
+                    </div>
+                    <div class="info-content">
+                      <h5>International Reach</h5>
+                      <p class="mb-0">30+ Countries</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="info-section">
+                  <h3 class="info-section-title">Important Dates</h3>
+
+                  <div class="info-item d-flex align-items-center">
+                    <div class="info-icon me-3">
+                      <i
+                        data-lucide="file-input"
+                        class="text-primary"
+                        style="font-size: 20px"
+                      ></i>
+                    </div>
+                    <div class="info-content">
+                      <h5>Paper Submission</h5>
+                      <p class="mb-0">December 31, 2024</p>
+                    </div>
+                  </div>
+
+                  <div class="info-item d-flex align-items-center">
+                    <div class="info-icon me-3">
+                      <i
+                        data-lucide="check-circle"
+                        class="text-primary"
+                        style="font-size: 20px"
+                      ></i>
+                    </div>
+                    <div class="info-content">
+                      <h5>Acceptance Notification</h5>
+                      <p class="mb-0">January 31, 2025</p>
+                    </div>
+                  </div>
+
+                  <div class="info-item d-flex align-items-center">
+                    <div class="info-icon me-3">
+                      <i
+                        data-lucide="calendar"
+                        class="text-primary"
+                        style="font-size: 20px"
+                      ></i>
+                    </div>
+                    <div class="info-content">
+                      <h5>Conference Dates</h5>
+                      <p class="mb-0">23-24 November 2024</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="submit-btn-wrapper">
+                  <a
+                    href="https://cmt3.research.microsoft.com"
+                    class="submit-btn"
+                  >
+                    <span>Submit Your Paper</span>
+                    <i data-lucide="arrow-right" style="font-size: 20px"></i>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <!-- Add CTA section -->
+      <div class="cta-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+              <h2 class="mb-4">Ready to Submit Your Research?</h2>
+              <p class="lead mb-4">
+                Join the leading researchers and practitioners in IoT,
+                Communication, and Automation Technology
+              </p>
+              <a
+                href="https://cmt3.research.microsoft.com"
+                class="btn btn-light btn-lg"
+              >
+                Submit Your Paper Now <i class="fas fa-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 800,
+        once: true,
+      });
+
+      // Initialize Lucide icons
+      lucide.createIcons();
+    </script>
   </body>
 </html>
