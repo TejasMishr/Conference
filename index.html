@@ -10,611 +10,14 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+
     <!-- Add AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <style>
-      .gradient-bg {
-        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-      }
-      .hero-section {
-        background: url("/assets/a61.jpg") center/cover no-repeat;
-        min-height: 100vh;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-attachment: fixed;
-        padding: 6rem 0;
-      }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .group:hover .group-hover\:opacity-100 {
-        animation: fadeIn 0.2s ease-out;
-      }
-
-      /* Responsive improvements */
-      @media (max-width: 640px) {
-        .hero-section {
-          min-height: 70vh;
-        }
-
-        h1.text-5xl {
-          font-size: 2.5rem;
-        }
-
-        h2.text-3xl {
-          font-size: 1.5rem;
-        }
-      }
-
-      /* Smooth scrolling */
-      html {
-        scroll-behavior: smooth;
-      }
-
-      /* Loading animation */
-      .loading {
-        opacity: 0;
-        transition: opacity 0.4s ease-in;
-      }
-
-      .loaded {
-        opacity: 1;
-      }
-
-      /* Add these responsive styles */
-      @media (max-width: 768px) {
-        /* Hero section adjustments */
-        .hero-section {
-          background-attachment: scroll;
-          min-height: calc(100vh - 64px);
-          padding: 4rem 1rem;
-          background-position: center;
-        }
-
-        .hero-section h1 {
-          font-size: 2.25rem !important;
-          line-height: 1.3;
-          padding: 0 0.5rem;
-        }
-
-        .hero-section h2 {
-          font-size: 1.5rem !important;
-        }
-
-        .hero-section p {
-          font-size: 1.125rem !important;
-          padding: 0 1rem;
-        }
-
-        .hero-section .button-group {
-          flex-direction: column;
-          padding: 0 2rem;
-        }
-
-        .hero-section .button-group a {
-          width: 100%;
-          text-align: center;
-          margin: 0.5rem 0;
-        }
-
-        /* Button stack on mobile */
-        .hero-section .flex-col {
-          gap: 1rem;
-        }
-
-        /* Organizers section padding */
-        .mb-20 {
-          margin-bottom: 3rem;
-        }
-
-        .p-12 {
-          padding: 1.5rem;
-        }
-
-        /* Department cards */
-        .group .w-20 {
-          width: 4rem;
-          height: 4rem;
-        }
-
-        .group .text-4xl {
-          font-size: 1.5rem;
-        }
-
-        .group .text-xl {
-          font-size: 1.125rem;
-          line-height: 1.4;
-        }
-
-        /* University info */
-        .w-24 {
-          width: 4rem;
-          height: 4rem;
-        }
-
-        .text-2xl {
-          font-size: 1.5rem;
-          line-height: 1.4;
-        }
-
-        /* Quick info cards */
-        .grid.md\:grid-cols-3 {
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
-        }
-
-        .p-8 {
-          padding: 1.25rem;
-        }
-
-        /* Places to visit section */
-        .grid.md\:grid-cols-2.lg\:grid-cols-3 {
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
-        }
-
-        /* Footer adjustments */
-        .grid.md\:grid-cols-3.gap-8 {
-          grid-template-columns: 1fr;
-          gap: 2rem;
-          text-align: center;
-        }
-
-        .flex.items-center {
-          justify-content: center;
-        }
-
-        /* Adjust card layouts */
-        .bg-gradient-to-br {
-          padding: 1.25rem;
-        }
-
-        /* Improve readability */
-        .text-gray-600 {
-          font-size: 0.875rem;
-        }
-
-        /* Better button spacing */
-        .space-y-3 {
-          margin-top: 1.5rem;
-        }
-
-        /* Mobile menu button */
-        #mobile-menu-button {
-          display: block;
-        }
-
-        #mobile-menu.active {
-          transform: translateX(0);
-        }
-
-        #mobile-menu-overlay.active {
-          opacity: 1;
-          pointer-events: auto;
-        }
-
-        body.menu-open {
-          overflow: hidden;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .hero-section {
-          min-height: calc(100vh - 64px);
-          padding: 3rem 0.5rem;
-        }
-
-        .hero-section h1 {
-          font-size: 1.875rem !important;
-          line-height: 1.4;
-        }
-
-        .hero-section .py-20 {
-          padding: 3rem 0;
-        }
-
-        .hero-section .button-group {
-          padding: 0 1rem;
-        }
-      }
-
-      /* Add overlay for better text readability */
-      .hero-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.85) 0%,
-          rgba(0, 0, 0, 0.75) 100%
-        );
-        z-index: 1;
-      }
-
-      .hero-section > div {
-        position: relative;
-        z-index: 2;
-        width: 100%;
-      }
-
-      /* Add smooth transitions */
-      .transition-all {
-        transition-property: all;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        transition-duration: 300ms;
-      }
-
-      /* Improve touch targets */
-      @media (max-width: 640px) {
-        a,
-        button {
-          min-height: 44px;
-          min-width: 44px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        /* Adjust icon sizes */
-        .bx {
-          font-size: 1.5rem;
-        }
-
-        /* Better spacing for stacked buttons */
-        .flex.flex-col.sm\:flex-row {
-          gap: 1rem;
-        }
-
-        /* Improve card readability */
-        .rounded-2xl {
-          border-radius: 1rem;
-        }
-
-        /* Adjust shadows for better visibility */
-        .shadow-xl {
-          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-            0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-      }
-
-      /* Add loading state styles */
-      .loading {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      .loaded {
-        opacity: 1;
-        transform: translateY(0);
-        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-      }
-
-      /* Ensure proper stacking */
-      .z-50 {
-        z-index: 50;
-      }
-
-      .z-40 {
-        z-index: 40;
-      }
-
-      /* Add preload for hero image */
-      .hero-section {
-        opacity: 0;
-        transition: opacity 0.3s ease-in;
-      }
-
-      .hero-section.loaded {
-        opacity: 1;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
 
     <script>
-      // Store references to frequently accessed elements
-      const mobileMenu = {
-        menu: null,
-        button: null,
-        overlay: null,
-        menuIcon: null,
-        closeIcon: null,
-        dropdowns: new Map(),
-        isOpen: false,
-      };
-
-      // Initialize mobile menu elements and event listeners
-      document.addEventListener("DOMContentLoaded", function () {
-        try {
-          initializeMobileMenu();
-          initializeDesktopDropdowns();
-          setupResizeHandler();
-          setupKeyboardNavigation();
-        } catch (error) {
-          console.error("Error initializing navigation:", error);
-        }
-      });
-
-      function initializeMobileMenu() {
-        try {
-          // Cache DOM elements
-          mobileMenu.menu = document.getElementById("mobile-menu");
-          mobileMenu.button = document.getElementById("mobile-menu-button");
-          mobileMenu.overlay = document.getElementById("mobile-menu-overlay");
-          mobileMenu.menuIcon = document.getElementById("menu-icon");
-          mobileMenu.closeIcon = document.getElementById("close-icon");
-
-          if (!mobileMenu.menu || !mobileMenu.button || !mobileMenu.overlay) {
-            throw new Error("Required mobile menu elements not found");
-          }
-
-          // Add click event listeners
-          mobileMenu.button.addEventListener("click", (e) => {
-            e.stopPropagation(); // Prevent event bubbling
-            toggleMobileMenu();
-          });
-
-          mobileMenu.overlay.addEventListener("click", closeMobileMenu);
-
-          // Close menu when clicking outside
-          document.addEventListener("click", function (event) {
-            if (
-              mobileMenu.isOpen &&
-              !mobileMenu.menu.contains(event.target) &&
-              !mobileMenu.button.contains(event.target)
-            ) {
-              closeMobileMenu();
-            }
-          });
-
-          // Handle touch events
-          document.addEventListener("touchstart", handleTouchStart, {
-            passive: true,
-          });
-          document.addEventListener("touchmove", handleTouchMove, {
-            passive: true,
-          });
-        } catch (error) {
-          console.error("Error initializing mobile menu:", error);
-        }
-      }
-
-      function toggleMobileMenu() {
-        try {
-          const { menu, overlay, menuIcon, closeIcon } = mobileMenu;
-          const body = document.body;
-
-          // Toggle menu state
-          mobileMenu.isOpen = !mobileMenu.isOpen;
-
-          // Toggle classes with error checking
-          if (menu && overlay && menuIcon && closeIcon) {
-            if (mobileMenu.isOpen) {
-              // Opening menu
-              menu.classList.remove("translate-x-full");
-              menu.classList.add("translate-x-0");
-              overlay.classList.remove("opacity-0", "pointer-events-none");
-              menuIcon.classList.add("hidden");
-              closeIcon.classList.remove("hidden");
-              body.classList.add("overflow-hidden");
-            } else {
-              // Closing menu
-              menu.classList.remove("translate-x-0");
-              menu.classList.add("translate-x-full");
-              overlay.classList.add("opacity-0", "pointer-events-none");
-              menuIcon.classList.remove("hidden");
-              closeIcon.classList.add("hidden");
-              body.classList.remove("overflow-hidden");
-            }
-
-            // Update ARIA attributes
-            mobileMenu.button.setAttribute("aria-expanded", mobileMenu.isOpen);
-
-            // Close all open dropdowns when closing menu
-            if (!mobileMenu.isOpen) {
-              closeAllMobileDropdowns();
-            }
-          }
-        } catch (error) {
-          console.error("Error toggling mobile menu:", error);
-        }
-      }
-
-      function closeMobileMenu() {
-        try {
-          if (mobileMenu.isOpen) {
-            const { menu, overlay, menuIcon, closeIcon } = mobileMenu;
-            const body = document.body;
-
-            mobileMenu.isOpen = false;
-
-            menu?.classList.add("translate-x-full");
-            overlay?.classList.add("opacity-0", "pointer-events-none");
-            menuIcon?.classList.remove("hidden");
-            closeIcon?.classList.add("hidden");
-            body?.classList.remove("overflow-hidden");
-
-            mobileMenu.button.setAttribute("aria-expanded", "false");
-            closeAllMobileDropdowns();
-          }
-        } catch (error) {
-          console.error("Error closing mobile menu:", error);
-        }
-      }
-
-      function toggleMobileDropdown(dropdownId) {
-        try {
-          const dropdown = document.getElementById(dropdownId);
-          const button = dropdown?.previousElementSibling;
-          const icon = button?.querySelector("svg");
-
-          if (!dropdown || !button || !icon) {
-            throw new Error(
-              `Dropdown elements not found for ID: ${dropdownId}`
-            );
-          }
-
-          const isOpen = !dropdown.classList.contains("hidden");
-
-          // Close other open dropdowns
-          closeAllMobileDropdowns(dropdownId);
-
-          // Toggle current dropdown
-          dropdown.classList.toggle("hidden");
-          icon.style.transform = isOpen ? "rotate(0deg)" : "rotate(180deg)";
-          button.setAttribute("aria-expanded", !isOpen);
-
-          // Store dropdown state
-          mobileMenu.dropdowns.set(dropdownId, !isOpen);
-        } catch (error) {
-          console.error("Error toggling mobile dropdown:", error);
-        }
-      }
-
-      function closeAllMobileDropdowns(exceptId = null) {
-        try {
-          mobileMenu.dropdowns.forEach((isOpen, dropdownId) => {
-            if (dropdownId !== exceptId && isOpen) {
-              const dropdown = document.getElementById(dropdownId);
-              const button = dropdown?.previousElementSibling;
-              const icon = button?.querySelector("svg");
-
-              if (dropdown && button && icon) {
-                dropdown.classList.add("hidden");
-                icon.style.transform = "rotate(0deg)";
-                button.setAttribute("aria-expanded", "false");
-                mobileMenu.dropdowns.set(dropdownId, false);
-              }
-            }
-          });
-        } catch (error) {
-          console.error("Error closing mobile dropdowns:", error);
-        }
-      }
-
-      function initializeDesktopDropdowns() {
-        try {
-          const dropdownButtons =
-            document.querySelectorAll(".dropdown-trigger");
-
-          dropdownButtons.forEach((button) => {
-            const dropdown = button.nextElementSibling;
-            if (!dropdown) return;
-
-            let timeoutId;
-
-            // Show dropdown on hover/focus
-            const showDropdown = () => {
-              clearTimeout(timeoutId);
-              dropdown.classList.remove(
-                "opacity-0",
-                "invisible",
-                "-translate-y-2"
-              );
-              dropdown.classList.add("opacity-100", "visible", "translate-y-0");
-              button.setAttribute("aria-expanded", "true");
-            };
-
-            // Hide dropdown
-            const hideDropdown = () => {
-              timeoutId = setTimeout(() => {
-                dropdown.classList.add(
-                  "opacity-0",
-                  "invisible",
-                  "-translate-y-2"
-                );
-                dropdown.classList.remove(
-                  "opacity-100",
-                  "visible",
-                  "translate-y-0"
-                );
-                button.setAttribute("aria-expanded", "false");
-              }, 150);
-            };
-
-            // Mouse events
-            button.parentElement.addEventListener("mouseenter", showDropdown);
-            button.parentElement.addEventListener("mouseleave", hideDropdown);
-
-            // Keyboard/Focus events
-            button.addEventListener("focus", showDropdown);
-            button.addEventListener("blur", hideDropdown);
-          });
-        } catch (error) {
-          console.error("Error initializing desktop dropdowns:", error);
-        }
-      }
-
-      function setupResizeHandler() {
-        let resizeTimeout;
-
-        window.addEventListener("resize", () => {
-          // Debounce resize handler
-          clearTimeout(resizeTimeout);
-          resizeTimeout = setTimeout(() => {
-            try {
-              if (window.innerWidth >= 768) {
-                // md breakpoint
-                closeMobileMenu();
-              }
-            } catch (error) {
-              console.error("Error handling window resize:", error);
-            }
-          }, 100);
-        });
-      }
-
-      function setupKeyboardNavigation() {
-        try {
-          // Close mobile menu on Escape key
-          document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-              closeMobileMenu();
-            }
-          });
-
-          // Add keyboard navigation for dropdowns
-          const dropdownButtons =
-            document.querySelectorAll(".dropdown-trigger");
-          dropdownButtons.forEach((button) => {
-            button.addEventListener("keydown", (event) => {
-              const dropdown = button.nextElementSibling;
-              if (!dropdown) return;
-
-              if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                dropdown.classList.toggle("hidden");
-                button.setAttribute(
-                  "aria-expanded",
-                  dropdown.classList.contains("hidden") ? "false" : "true"
-                );
-              }
-            });
-          });
-        } catch (error) {
-          console.error("Error setting up keyboard navigation:", error);
-        }
-      }
-
-      // Handle committee link clicks
-      function handleCommitteeClick(event, path) {
-        event.preventDefault();
-        window.location.href = path;
-      }
-
       // Initialize AOS
       document.addEventListener("DOMContentLoaded", function () {
         AOS.init();
@@ -645,56 +48,6 @@
         observer.observe(element);
       });
 
-      // Improve scroll performance
-      let scrollTimeout;
-      window.addEventListener(
-        "scroll",
-        () => {
-          if (!scrollTimeout) {
-            window.requestAnimationFrame(() => {
-              // Update scroll-based elements
-              const scrollButton = document.getElementById("scroll-top");
-              if (document.documentElement.scrollTop > 100) {
-                scrollButton.classList.remove("hidden");
-              } else {
-                scrollButton.classList.add("hidden");
-              }
-              scrollTimeout = null;
-            });
-            scrollTimeout = true;
-          }
-        },
-        { passive: true }
-      );
-
-      // Add touch gesture support
-      let touchStartX = 0;
-      let touchEndX = 0;
-
-      function handleTouchStart(event) {
-        touchStartX = event.touches[0].clientX;
-      }
-
-      function handleTouchMove(event) {
-        touchEndX = event.touches[0].clientX;
-        handleSwipe();
-      }
-
-      function handleSwipe() {
-        const swipeThreshold = 50;
-        const swipeDistance = touchEndX - touchStartX;
-
-        if (Math.abs(swipeDistance) > swipeThreshold) {
-          if (mobileMenu.isOpen && swipeDistance > 0) {
-            // Swipe right to close
-            closeMobileMenu();
-          } else if (!mobileMenu.isOpen && swipeDistance < 0) {
-            // Swipe left to open
-            toggleMobileMenu();
-          }
-        }
-      }
-
       // Add this script for better image loading
       document.addEventListener("DOMContentLoaded", function () {
         const heroSection = document.querySelector(".hero-section");
@@ -708,650 +61,986 @@
   </head>
   <body class="bg-gray-50">
     <!-- Navbar -->
-    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-lg z-50">
-      <div class="mx-auto flex justify-between items-center px-4 md:px-8 h-16">
-        <!-- Logo -->
-        <a href="/" class="flex items-center space-x-2">
-          <img
-            src="assets/logommm.jpg"
-            alt="ICETITSC Logo"
-            class="h-10 w-auto"
-          />
-          <span
-            class="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
-            >ICETITSC</span
-          >
-        </a>
-
-        <!-- Mobile Menu Button -->
-        <button
-          id="mobile-menu-button"
-          class="block md:hidden p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 z-50"
-          aria-label="Open Menu"
-          aria-expanded="false"
-          onclick="toggleMobileMenu()"
-        >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              id="menu-icon"
-              class="block"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-            <path
-              id="close-icon"
-              class="hidden"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-
-        <!-- Main Menu (Desktop) -->
-        <div class="hidden md:flex items-center space-x-1">
-          <a
-            href="/"
-            class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
-            >Home</a
-          >
-          <a
-            href="/about.html"
-            class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
-            >About</a
-          >
-          <a
-            href="/call-for-paper.html"
-            class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
-            >Call for Paper</a
-          >
-
-          <!-- Committee Dropdown -->
-          <div class="relative group">
-            <button
-              class="dropdown-trigger px-3 py-2 text-gray-700 hover:text-blue-600 flex items-center"
-              aria-expanded="false"
-              onclick="window.open('/committee-patrons.html', '_self')"
-            >
-              Committee
-              <svg
-                class="w-4 h-4 ml-1 transition-transform duration-200"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                ></path>
-              </svg>
-            </button>
-            <div
-              class="dropdown-content absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-lg opacity-0 invisible transform -translate-y-2 transition-all duration-200"
-            >
-              <a
-                href="/committee-patrons.html"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 rounded-lg"
-                >Patrons & Chairs</a
-              >
-              <a
-                href="/committee-technical.html"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 rounded-lg"
-                >Technical Committee</a
-              >
+    <section class="navigation">
+      <div class="nav-container">
+        <div class="brand">
+          <a href="#!">
+            <img src="assets/logommm.jpg" alt="ICETITSC Logo" class="h-10 w-auto rounded inline-block align-middle">
+            <span class="text-xl font-bold text-white ml-2 align-middle">ICETITSC-2025</span>
+          </a>
+        </div>
+        <nav>
+          <div class="nav-mobile"><a id="navbar-toggle" href="#!"><span></span></a></div>
+          <ul class="nav-list">
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+            <li>
+              <a href="about.html">About Us</a>
+              <!-- <ul class="navbar-dropdown">
+                <li><a href="about-university.html">About University</a></li>
+                <li><a href="about-it-department.html">IT Department</a></li>
+                <li><a href="about-math-department.html">Math Department</a></li>
+              </ul> -->
+            </li>
+            <li>
+              <a href="#!">Call for Papers</a>
+              <ul class="navbar-dropdown">
+                <li><a href="call-for-paper.html">Paper Submission</a></li>
+                <li><a href="guidelines.html">Guidelines</a></li>
+                <li><a href="tracks.html">Conference Tracks</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="committee-patrons.html">Committee</a>
+            </li>
+            <li>
+              <a href="registration.html">Registration</a>
+            </li>
+            <li>
+              <a href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+    <div class="announcement-bar">
+      <div class="announcement-container">
+        <div class="announcement-wrapper">
+          <!-- Important Announcement -->
+          <div class="announcement-item">
+            <div class="announcement-icon">
+              <div class="pulse-ring"></div>
+              <i class='bx bx-news text-blue-500'></i>
+            </div>
+            <div class="announcement-content">
+              <span class="announcement-label">New</span>
+              Welcome to ICETITSC-2025
             </div>
           </div>
 
-          <!-- Register & Submit -->
-          <a
-            href="/registration.html"
-            class="ml-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
-            >Register</a
-          >
-          <a
-            href="/submit-paper.html"
-            class="ml-2 px-4 py-2 text-sm font-medium text-blue-600 border border-blue-600 rounded-lg"
-            >Submit Paper</a
-          >
-        </div>
-      </div>
-
-      <!-- Mobile Menu -->
-      <div
-        id="mobile-menu"
-        class="fixed inset-y-0 right-0 w-64 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50"
-      >
-        <div class="flex flex-col h-full">
-          <div class="p-4 border-b">
-            <img
-              src="assets/logommm.jpg"
-              alt="ICETITSC Logo"
-              class="h-12 w-auto mx-auto"
-            />
-          </div>
-          <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
-            <a
-              href="/"
-              class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded-lg"
-              >Home</a
-            >
-            <a
-              href="/about.html"
-              class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded-lg"
-              >About</a
-            >
-            <a
-              href="/call-for-paper.html"
-              class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded-lg"
-              >Call for Paper</a
-            >
-
-            <!-- Mobile Committee Dropdown -->
-            <div class="relative">
-              <button
-                class="w-full px-4 py-2 text-left text-gray-700 hover:bg-blue-50 rounded-lg flex items-center justify-between"
-                onclick="toggleMobileDropdown('mobile-committee-dropdown')"
-              >
-                Committee
-                <svg
-                  class="w-4 h-4 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </button>
-              <div
-                id="mobile-committee-dropdown"
-                class="hidden px-4 py-2 space-y-1"
-              >
-                <a
-                  href="/committee-patrons.html"
-                  class="block px-4 py-2 text-gray-600 hover:bg-blue-50 rounded-lg"
-                  >Patrons & Chairs</a
-                >
-                <a
-                  href="/committee-technical.html"
-                  class="block px-4 py-2 text-gray-600 hover:bg-blue-50 rounded-lg"
-                  >Technical Committee</a
-                >
-              </div>
+          <!-- Paper Submission -->
+          <div class="announcement-item">
+            <div class="announcement-icon">
+              <i class='bx bx-calendar text-green-500'></i>
             </div>
-          </nav>
-          <div class="p-4 border-t space-y-2">
-            <a
-              href="/registration.html"
-              class="block w-full px-4 py-2 text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700"
-              >Register</a
-            >
-            <a
-              href="/submit-paper.html"
-              class="block w-full px-4 py-2 text-center text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50"
-              >Submit Paper</a
-            >
+            <div class="announcement-content">
+              <span class="announcement-label">Deadline</span>
+              Paper Submission: December 31, 2024
+            </div>
+          </div>
+
+          <!-- Registration -->
+          <div class="announcement-item">
+            <div class="announcement-icon">
+              <i class='bx bx-user-plus text-purple-500'></i>
+            </div>
+            <div class="announcement-content">
+              <span class="announcement-label">Registration</span>
+              Early Bird Registration Now Open
+            </div>
+          </div>
+
+          <!-- Conference Venue -->
+          <div class="announcement-item">
+            <div class="announcement-icon">
+              <i class='bx bx-map-pin text-red-500'></i>
+            </div>
+            <div class="announcement-content">
+              <span class="announcement-label">Venue</span>
+              MMMUT, Gorakhpur
+            </div>
+          </div>
+
+          <!-- Important Updates -->
+          <div class="announcement-item">
+            <div class="announcement-icon">
+              <i class='bx bx-badge-check text-amber-500'></i>
+            </div>
+            <div class="announcement-content">
+              <span class="announcement-label">Achievement</span>
+              NAAC Grade A University
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Overlay -->
-      <div
-        id="mobile-menu-overlay"
-        class="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out md:hidden z-40"
-        onclick="toggleMobileMenu()"
-      ></div>
-    </nav>
+    </div>
 
     <!-- Update the hero section structure -->
-    <div class="pt-16">
+    <section class="hero-wrapper pt-[130px]">
       <div class="hero-section">
         <div
-          class="container mx-auto px-4 py-20 text-center text-white max-w-5xl"
+          class="relative h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden"
         >
-          <h1
-            class="text-4xl md:text-5xl font-bold mb-6 leading-tight"
-            data-aos="fade-down"
-            data-aos-duration="1000"
-          >
-            International Conference on Emerging Trends in Information
-            Technology & Symbolic Computation
-          </h1>
-          <h2
-            class="text-xl md:text-2xl font-medium mb-4"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            data-aos-delay="200"
-          >
-            ICETITSC-2025
-          </h2>
-          <p
-            class="text-lg md:text-xl mb-8 text-gray-200"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            data-aos-delay="300"
-          >
-            February 15-17, 2025 | MMMUT, Gorakhpur, India
-          </p>
+          <img
+            src="assets/a61.jpg"
+            alt="MMMUT Campus"
+            class="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover"
+            style="filter: brightness(0.5);"
+          />
           <div
-            class="button-group flex flex-col sm:flex-row justify-center gap-4 md:gap-6 px-4 md:px-0"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            data-aos-delay="400"
+            class="absolute inset-0 bg-gradient-to-b from-black/80 to-black/60 backdrop-blur-[2px]"
           >
-            <a
-              href="registration.html"
-              class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 md:py-4 px-6 md:px-8 rounded-lg transition duration-300 shadow-lg hover:shadow-xl"
+            <div
+              class="container mx-auto px-4 h-full flex items-center justify-center"
             >
-              Register Now
-            </a>
-            <a
-              href="submission.html"
-              class="bg-transparent border-2 border-white hover:bg-white/10 text-white font-semibold py-3 md:py-4 px-6 md:px-8 rounded-lg transition duration-300"
-            >
-              Submit Paper
-            </a>
+              <div
+                class="text-center"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+              >
+                <!-- Conference Title -->
+                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 leading-tight">
+                  International Conference<br />
+                 
+                </h1>
+
+                <!-- Conference ID -->
+                <div class="inline-block bg-blue-600/20 backdrop-blur-sm px-4 sm:px-6 py-1.5 sm:py-2 rounded-full border border-blue-400/30 mb-4 sm:mb-6">
+                  <h2 class="text-lg sm:text-xl md:text-2xl font-semibold text-blue-200">
+                    ICETITSC-2025
+                  </h2>
+                </div>
+
+                <!-- Organizing Departments -->
+
+                <!-- University Info -->
+                <!-- <div
+                  class="inline-block bg-white/10 backdrop-blur-sm px-6 py-3 rounded-xl border border-white/20"
+                >
+                  <p class="text-base md:text-lg text-white">
+                    Madan Mohan Malaviya University of Technology<br />
+                    <span class="text-blue-200"
+                      >Gorakhpur, Uttar Pradesh, India</span
+                    >
+                  </p>
+                </div> -->
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Main Content -->
-      <div class="px-4 py-16">
-        <!-- Organizers Section -->
-        <div class="mb-20">
-          <div
-            class="bg-gradient-to-tr from-white via-blue-50 to-blue-100 rounded-3xl shadow-2xl p-12 backdrop-blur-sm border border-white/20"
-            data-aos="fade-up"
-            data-aos-duration="1000"
+    <!-- Main Content -->
+    <div class="px-4 py-16">
+      <!-- Add main-content class and modify the flex container -->
+      <div class="main-content flex flex-col lg:flex-row gap-8">
+        <!-- Conference Overview - Add conference-section class -->
+        <div
+          class="conference-section flex-1 bg-white rounded-2xl shadow-xl p-5 sm:p-6 md:p-8 lg:p-10 hover:shadow-2xl transition-shadow duration-300"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <h2
+            class="text-2xl sm:text-3xl font-bold text-blue-700 mb-6 sm:mb-8 border-b pb-4"
           >
-            <h3 class="text-4xl font-bold text-center text-gray-800 mb-12">
-              <span class="relative inline-block px-4">
-                Organised by
-                <div
-                  class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-400"
-                ></div>
-              </span>
-            </h3>
+            Conference Overview
+          </h2>
+          <div class="space-y-6 sm:space-y-8">
+            <p class="text-gray-700 leading-relaxed text-base sm:text-lg">
+              The International Conference on Emerging Trends in Information
+              Technology and Scientific Computing (ICETITSC-2025) is being
+              organized by Madan Mohan Malaviya University of Technology,
+              Gorakhpur, Uttar Pradesh, India. This prestigious event is
+              jointly hosted by the Department of Information Technology &
+              Computer Application and Department of Mathematics & Scientific
+              Computing.
+            </p>
 
-            <div class="grid md:grid-cols-2 gap-12">
-              <!-- IT Department Card -->
-              <div class="group">
-                <div
-                  class="bg-white/80 backdrop-blur p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-white/60"
-                >
-                  <div class="text-center space-y-4">
-                    <div
-                      class="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-400 rounded-2xl mx-auto flex items-center justify-center transform rotate-45 group-hover:rotate-0 transition-transform duration-500"
-                    >
-                      <i
-                        class="bx bx-code-block text-4xl text-white transform -rotate-45 group-hover:rotate-0 transition-transform duration-500"
-                      ></i>
-                    </div>
-                    <p class="text-xl font-bold text-gray-800 mt-6">
-                      Department of Information Technology & Computer
-                      Application
-                    </p>
-                    <div
-                      class="w-32 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Mathematics Department Card -->
-              <div class="group">
-                <div
-                  class="bg-white/80 backdrop-blur p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-white/60"
-                >
-                  <div class="text-center space-y-4">
-                    <div
-                      class="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-400 rounded-2xl mx-auto flex items-center justify-center transform rotate-45 group-hover:rotate-0 transition-transform duration-500"
-                    >
-                      <i
-                        class="bx bx-math text-4xl text-white transform -rotate-45 group-hover:rotate-0 transition-transform duration-500"
-                      ></i>
-                    </div>
-                    <p class="text-xl font-bold text-gray-800 mt-6">
-                      Department of Mathematics & Scientific Computing
-                    </p>
-                    <div
-                      class="w-32 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
-                    ></div>
-                  </div>
-                </div>
-              </div>
+            <div class="bg-blue-50 rounded-xl p-4 sm:p-6">
+              <h3 class="text-lg sm:text-xl font-semibold text-blue-700 mb-4">
+                Conference Topics
+              </h3>
+              <ul
+                class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-700 text-sm sm:text-base"
+              >
+                <li class="flex items-center space-x-2">
+                  <i class="bx bx-check-circle text-blue-600"></i>
+                  <span>Advanced Computing and AI</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i class="bx bx-check-circle text-blue-600"></i>
+                  <span>Computer Vision & Pattern Recognition</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i class="bx bx-check-circle text-blue-600"></i>
+                  <span>Data Science and Analytics</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i class="bx bx-check-circle text-blue-600"></i>
+                  <span>Applied Mathematics & Algebra</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i class="bx bx-check-circle text-blue-600"></i>
+                  <span>Cryptography and Security</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i class="bx bx-check-circle text-blue-600"></i>
+                  <span>Operations Research</span>
+                </li>
+              </ul>
             </div>
 
-            <!-- University Info -->
-            <div class="mt-12">
+            <div class="space-y-4">
+              <p class="text-gray-700 leading-relaxed">
+                The conference features distinguished keynote speakers,
+                technical sessions, and paper presentations, creating an ideal
+                platform for researchers, professionals, and students from
+                across the globe to share their innovative ideas and research
+                findings.
+              </p>
+
+              <p class="text-gray-700 leading-relaxed">
+                ICETITSC-2025 aims to foster collaboration between academia
+                and industry, promoting interdisciplinary research and
+                practical applications while advancing the frontiers of IT and
+                scientific computing.
+              </p>
+            </div>
+          </div>
+
+          <!-- Add Tracks Section after the existing content -->
+          <div class="mt-12" data-aos="fade-up">
+            <h2
+              class="text-2xl sm:text-3xl font-bold text-blue-700 mb-8 border-b pb-4"
+            >
+              Tracks of Conference
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Track 1 -->
               <div
-                class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white/60"
+                class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-l-4 border-blue-500"
               >
-                <div class="text-center space-y-4">
-                  <div class="w-24 h-24 mx-auto">
-                    <img
-                      src="assets/logommm.jpg"
-                      alt="MMMUT Logo"
-                      class="w-full h-full object-contain"
-                    />
+                <div class="flex items-start space-x-4">
+                  <div class="bg-blue-100 rounded-lg p-3">
+                    <i class="bx bx-chip text-2xl text-blue-600"></i>
                   </div>
                   <div>
-                    <h4 class="text-2xl font-bold text-gray-800">
-                      Madan Mohan Malaviya University of Technology
-                    </h4>
-                    <p
-                      class="text-lg text-gray-600 flex items-center justify-center mt-2"
-                    >
-                      <i class="bx bx-map-pin text-blue-600 mr-2"></i>
-                      Gorakhpur, Uttar Pradesh, India
+                    <h3 class="text-lg font-bold text-blue-700 mb-2">
+                      Track 1: Computing
+                    </h3>
+                    <div class="h-1 w-20 bg-blue-200 mb-3"></div>
+                    <p class="text-gray-600 text-sm">
+                      Advanced computing technologies and applications
                     </p>
                   </div>
-                  <div class="flex justify-center gap-4 mt-4">
-                    <a
-                      href="about-university.html"
-                      class="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-700"
-                    >
-                      <i class="bx bx-building-house mr-2"></i>
-                      About University
-                    </a>
-                    <a
-                      href="https://maps.google.com"
-                      target="_blank"
-                      class="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-700"
-                    >
-                      <i class="bx bx-map mr-2"></i>
-                      Get Directions
-                    </a>
+                </div>
+              </div>
+
+              <!-- Track 2 -->
+              <div
+                class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-l-4 border-indigo-500"
+              >
+                <div class="flex items-start space-x-4">
+                  <div class="bg-indigo-100 rounded-lg p-3">
+                    <i class="bx bx-brain text-2xl text-indigo-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-bold text-indigo-700 mb-2">
+                      Track 2: Artificial Intelligence
+                    </h3>
+                    <div class="h-1 w-20 bg-indigo-200 mb-3"></div>
+                    <p class="text-gray-600 text-sm">
+                      AI algorithms, machine learning, and neural networks
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Track 3 -->
+              <div
+                class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-l-4 border-purple-500"
+              >
+                <div class="flex items-start space-x-4">
+                  <div class="bg-purple-100 rounded-lg p-3">
+                    <i class="bx bx-camera text-2xl text-purple-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-bold text-purple-700 mb-2">
+                      Track 3: Computer Vision
+                    </h3>
+                    <div class="h-1 w-20 bg-purple-200 mb-3"></div>
+                    <p class="text-gray-600 text-sm">
+                      Image processing and visual recognition systems
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Track 4 -->
+              <div
+                class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-l-4 border-pink-500"
+              >
+                <div class="flex items-start space-x-4">
+                  <div class="bg-pink-100 rounded-lg p-3">
+                    <i class="bx bx-data text-2xl text-pink-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-bold text-pink-700 mb-2">
+                      Track 4: Data Science
+                    </h3>
+                    <div class="h-1 w-20 bg-pink-200 mb-3"></div>
+                    <p class="text-gray-600 text-sm">
+                      Big data analytics and data-driven insights
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Track 5 -->
+              <div
+                class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-l-4 border-cyan-500"
+              >
+                <div class="flex items-start space-x-4">
+                  <div class="bg-cyan-100 rounded-lg p-3">
+                    <i class="bx bx-trending-up text-2xl text-cyan-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-bold text-cyan-700 mb-2">
+                      Track 5: Technology Trends
+                    </h3>
+                    <div class="h-1 w-20 bg-cyan-200 mb-3"></div>
+                    <p class="text-gray-600 text-sm">
+                      Emerging technologies and future innovations
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Track 6 -->
+              <div
+                class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-l-4 border-teal-500"
+              >
+                <div class="flex items-start space-x-4">
+                  <div class="bg-teal-100 rounded-lg p-3">
+                    <i class="bx bx-lock-alt text-2xl text-teal-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-bold text-teal-700 mb-2">
+                      Track 6: Algebra, Cryptography and Computing
+                    </h3>
+                    <div class="h-1 w-20 bg-teal-200 mb-3"></div>
+                    <p class="text-gray-600 text-sm">
+                      Mathematical foundations and security systems
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Track 7 -->
+              <div
+                class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-l-4 border-orange-500"
+              >
+                <div class="flex items-start space-x-4">
+                  <div class="bg-orange-100 rounded-lg p-3">
+                    <i class="bx bx-line-chart text-2xl text-orange-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-bold text-orange-700 mb-2">
+                      Track 7: Operation Research & Queuing Theory
+                    </h3>
+                    <div class="h-1 w-20 bg-orange-200 mb-3"></div>
+                    <p class="text-gray-600 text-sm">
+                      Optimization and system performance analysis
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Track 8 -->
+              <div
+                class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-l-4 border-green-500"
+              >
+                <div class="flex items-start space-x-4">
+                  <div class="bg-green-100 rounded-lg p-3">
+                    <i class="bx bx-function text-2xl text-green-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-bold text-green-700 mb-2">
+                      Track 8: Differential Equation & Mathematical Modeling
+                    </h3>
+                    <div class="h-1 w-20 bg-green-200 mb-3"></div>
+                    <p class="text-gray-600 text-sm">
+                      Mathematical analysis and system modeling
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Quick Info Cards -->
-        <div class="grid md:grid-cols-3 gap-8 mb-20">
-          <!-- Important Dates Card -->
-          <div class="group">
-            <div
-              class="bg-gradient-to-br from-white via-blue-50 to-blue-100 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-white/60"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <div class="relative">
-                <div
-                  class="absolute inset-0 bg-blue-600 rounded-full opacity-10 group-hover:scale-110 transition-transform duration-500"
-                ></div>
-                <div
-                  class="bg-gradient-to-br from-blue-600 to-blue-400 text-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500"
-                >
-                  <i class="bx bx-calendar text-3xl"></i>
-                </div>
-              </div>
-              <h4 class="text-xl font-bold mb-4 text-center text-gray-800">
-                Important Dates
-              </h4>
-              <div class="space-y-3">
-                <div
-                  class="text-center p-3 bg-white/80 backdrop-blur-sm rounded-xl shadow-sm"
-                >
-                  <p class="text-gray-600 text-sm">Paper Submission Deadline</p>
-                  <p class="font-bold text-blue-600 mt-1">December 31, 2024</p>
-                </div>
-              </div>
+
+  <!-- Paper Section Starts -->
+  <div class="mt-16" data-aos="fade-up">
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div class="p-8">
+        <h2 class="text-2xl font-bold text-blue-700 mb-8 flex items-center">
+          <i class="bx bx-file text-3xl mr-3"></i>
+          Paper Submission Guidelines
+        </h2>
+
+        <!-- Guidelines Card -->
+        <div class="space-y-8">
+          <!-- Main Guidelines -->
+          <div class="bg-gray-50 rounded-xl p-6">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+              <i class="bx bx-list-check text-blue-600 text-2xl mr-2"></i>
+              Submission Requirements
+            </h3>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <i class="bx bx-check-circle text-blue-600 mt-1 mr-3 text-xl"></i>
+                <p class="text-gray-700">
+                  Papers must be written in English and follow the
+                  <span class="text-blue-600 font-medium">IEEE conference paper format</span>
+                </p>
+              </li>
+              <li class="flex items-start">
+                <i class="bx bx-check-circle text-blue-600 mt-1 mr-3 text-xl"></i>
+                <p class="text-gray-700">
+                  Draft version must be submitted for review before the submission deadline
+                </p>
+              </li>
+              <li class="flex items-start">
+                <i class="bx bx-check-circle text-blue-600 mt-1 mr-3 text-xl"></i>
+                <p class="text-gray-700">
+                  Maximum <span class="font-medium">6 pages</span> including figures and references (PDF format)
+                </p>
+              </li>
+              <li class="flex items-start">
+                <i class="bx bx-check-circle text-blue-600 mt-1 mr-3 text-xl"></i>
+                <p class="text-gray-700">
+                  File size must not exceed <span class="font-medium">10 MB</span>
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Paper Upload Section -->
+          <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-6 text-white">
+            <h3 class="text-lg font-semibold mb-4 flex items-center">
+              <i class="bx bx-upload text-2xl mr-2"></i>
+              Paper Upload
+            </h3>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a 
+                href="#" 
+                class="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors flex items-center justify-center"
+              >
+                <i class="bx bx-cloud-upload text-xl mr-2"></i>
+                Submit Your Paper
+              </a>
+              <a 
+                href="#" 
+                class="bg-blue-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-400 transition-colors flex items-center justify-center"
+              >
+                <i class="bx bx-download text-xl mr-2"></i>
+                Download Template
+              </a>
             </div>
           </div>
 
-          <!-- Venue Card -->
-          <div class="group">
-            <div
-              class="bg-gradient-to-br from-white via-blue-50 to-blue-100 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-white/60"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div class="relative">
-                <div
-                  class="absolute inset-0 bg-blue-600 rounded-full opacity-10 group-hover:scale-110 transition-transform duration-500"
-                ></div>
-                <div
-                  class="bg-gradient-to-br from-blue-600 to-blue-400 text-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500"
-                >
-                  <i class="bx bx-map text-3xl"></i>
+          <!-- Publication Opportunities -->
+          <div class="bg-gray-50 rounded-xl p-6">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+              <i class="bx bx-book-open text-blue-600 text-2xl mr-2"></i>
+              Paper Publication
+            </h3>
+            <p class="text-gray-700 mb-4">
+              Selected papers of the Conference will be submitted to the following Journals for publication:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Add journal cards here -->
+              <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center space-x-3">
+                  <i class="bx bx-journal text-blue-600 text-2xl"></i>
+                  <div>
+                    <h4 class="font-medium text-gray-800">Journal Name 1</h4>
+                    <p class="text-sm text-gray-600">Impact Factor: X.XX</p>
+                  </div>
                 </div>
               </div>
-              <h4 class="text-xl font-bold mb-4 text-center text-gray-800">
-                Venue
-              </h4>
-              <div class="space-y-3">
-                <div
-                  class="text-center p-3 bg-white/80 backdrop-blur-sm rounded-xl shadow-sm"
-                >
-                  <p class="text-gray-600 text-sm">MMMUT Campus</p>
-                  <p class="font-bold text-blue-600 mt-1">
-                    Gorakhpur, Uttar Pradesh
-                  </p>
+              <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center space-x-3">
+                  <i class="bx bx-journal text-blue-600 text-2xl"></i>
+                  <div>
+                    <h4 class="font-medium text-gray-800">Journal Name 2</h4>
+                    <p class="text-sm text-gray-600">Impact Factor: X.XX</p>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Participants Card -->
-          <div class="group">
-            <div
-              class="bg-gradient-to-br from-white via-blue-50 to-blue-100 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-white/60"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <div class="relative">
-                <div
-                  class="absolute inset-0 bg-blue-600 rounded-full opacity-10 group-hover:scale-110 transition-transform duration-500"
-                ></div>
-                <div
-                  class="bg-gradient-to-br from-blue-600 to-blue-400 text-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:rotate-12 transition-transform duration-500"
-                >
-                  <i class="bx bx-group text-3xl"></i>
-                </div>
-              </div>
-              <h4 class="text-xl font-bold mb-4 text-center text-gray-800">
-                Participants
-              </h4>
-              <div class="space-y-3">
-                <div
-                  class="text-center p-3 bg-white/80 backdrop-blur-sm rounded-xl shadow-sm"
-                >
-                  <p class="text-gray-600 text-sm">Expected Attendees</p>
-                  <p class="font-bold text-blue-600 mt-1">
-                    500+ from 20+ Countries
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Nearest Places to Visit Section -->
-        <div class="mb-16">
-          <h3
-            class="text-3xl font-bold text-center text-gray-800 mb-12 relative inline-block"
-            data-aos="fade-up"
-          >
-            <i class="bx bx-map-pin text-blue-600 mr-2"></i>
-            <span>Nearest Places to Visit</span>
-            <div
-              class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600"
-            ></div>
-          </h3>
-
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Nearby Places -->
-            <div
-              class="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <div class="p-8">
-                <div class="flex items-center justify-between mb-6">
-                  <h4 class="text-xl font-bold text-gray-800 flex items-center">
-                    <i
-                      class="bx bx-building-house text-3xl text-blue-600 mr-3"
-                    ></i>
-                    Local Attractions
-                  </h4>
-                </div>
-                <ul class="space-y-4">
-                  <li
-                    class="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
-                  >
-                    <i class="bx bxs-right-arrow text-blue-600"></i>
-                    <span class="text-gray-700">
-                      Gorakhnath Temple
-                      <span
-                        class="ml-2 px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium"
-                        >10 Km</span
-                      >
-                    </span>
-                  </li>
-                  <li
-                    class="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
-                  >
-                    <i class="bx bxs-right-arrow text-blue-600"></i>
-                    <span class="text-gray-700">
-                      Geeta Press
-                      <span
-                        class="ml-2 px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium"
-                        >15 Km</span
-                      >
-                    </span>
-                  </li>
-                  <li
-                    class="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
-                  >
-                    <i class="bx bxs-right-arrow text-blue-600"></i>
-                    <span class="text-gray-700">
-                      Maghar
-                      <span
-                        class="ml-2 px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium"
-                        >35 Km</span
-                      >
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Religious Places -->
-            <div
-              class="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div class="p-8">
-                <div class="flex items-center justify-between mb-6">
-                  <h4 class="text-xl font-bold text-gray-800 flex items-center">
-                    <i class="bx bx-church text-3xl text-blue-600 mr-3"></i>
-                    Religious Sites
-                  </h4>
-                </div>
-                <ul class="space-y-4">
-                  <li
-                    class="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
-                  >
-                    <i class="bx bxs-right-arrow text-blue-600"></i>
-                    <span class="text-gray-700">
-                      Kushinagar
-                      <span
-                        class="ml-2 px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium"
-                        >60 Km</span
-                      >
-                    </span>
-                  </li>
-                  <li
-                    class="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
-                  >
-                    <i class="bx bxs-right-arrow text-blue-600"></i>
-                    <span class="text-gray-700">
-                      Ayodhya Dham
-                      <span
-                        class="ml-2 px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium"
-                        >155 Km</span
-                      >
-                    </span>
-                  </li>
-                  <li
-                    class="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
-                  >
-                    <i class="bx bxs-right-arrow text-blue-600"></i>
-                    <span class="text-gray-700">
-                      Lumbani, Nepal
-                      <span
-                        class="ml-2 px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium"
-                        >130 Km</span
-                      >
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Travel Tips Card -->
-            <div
-              class="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <div class="p-8">
-                <div class="flex items-center justify-between mb-6">
-                  <h4 class="text-xl font-bold text-gray-800 flex items-center">
-                    <i
-                      class="bx bx-info-circle text-3xl text-blue-600 mr-3"
-                    ></i>
-                    Travel Tips
-                  </h4>
-                </div>
-                <ul class="space-y-4">
-                  <li
-                    class="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
-                  >
-                    <i class="bx bx-car text-2xl text-blue-600"></i>
-                    <span class="text-gray-700"
-                      >24/7 Cab services available</span
-                    >
-                  </li>
-                  <li
-                    class="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
-                  >
-                    <i class="bx bx-bus text-2xl text-blue-600"></i>
-                    <span class="text-gray-700">Regular bus connectivity</span>
-                  </li>
-                  <li
-                    class="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
-                  >
-                    <i class="bx bx-time-five text-2xl text-blue-600"></i>
-                    <span class="text-gray-700"
-                      >Plan day trips accordingly</span
-                    >
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <!-- Paper Section Ends -->
+
+
+          <!-- Conference Overview Ends -->
+
+
+        </div>
+
+        <!-- Quick Links - Add quick-links-section class -->
+        <div class="quick-links-section w-full lg:w-1/3" data-aos="fade-up">
+          <!-- Important Dates Section -->
+          <div class="dates-section" data-aos="fade-up" data-aos-delay="100">
+            <h2
+              class="text-2xl sm:text-3xl font-bold text-blue-700 mb-6 sm:mb-8"
+            >
+              Important Dates
+            </h2>
+            <div class="bg-white rounded-xl shadow-lg p-6 space-y-4">
+              <!-- Date Item 1 -->
+              <div class="flex items-center space-x-4 group">
+                <div
+                  class="bg-blue-100 rounded-lg p-3 group-hover:bg-blue-200 transition-colors"
+                >
+                  <i class="bx bx-calendar text-2xl text-blue-600"></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-sm font-semibold text-gray-800">
+                    Paper Submission Starts
+                  </h3>
+                  <p class="text-blue-600 font-bold">20 Oct 2024</p>
+                </div>
+              </div>
+
+              <!-- Date Item 2 -->
+              <div class="flex items-center space-x-4 group">
+                <div
+                  class="bg-red-100 rounded-lg p-3 group-hover:bg-red-200 transition-colors"
+                >
+                  <i class="bx bx-time text-2xl text-red-600"></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-sm font-semibold text-gray-800">
+                    Submission Deadline
+                  </h3>
+                  <p class="text-red-600 font-bold">20 Dec 2024</p>
+                </div>
+              </div>
+
+              <!-- Date Item 3 -->
+              <div class="flex items-center space-x-4 group">
+                <div
+                  class="bg-green-100 rounded-lg p-3 group-hover:bg-green-200 transition-colors"
+                >
+                  <i class="bx bx-check-circle text-2xl text-green-600"></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-sm font-semibold text-gray-800">
+                    Acceptance Notification
+                  </h3>
+                  <p class="text-green-600 font-bold">30 Jan 2025</p>
+                </div>
+              </div>
+
+              <!-- Date Item 4 -->
+              <div class="flex items-center space-x-4 group">
+                <div
+                  class="bg-purple-100 rounded-lg p-3 group-hover:bg-purple-200 transition-colors"
+                >
+                  <i class="bx bx-user-plus text-2xl text-purple-600"></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-sm font-semibold text-gray-800">
+                    Registration Opens
+                  </h3>
+                  <p class="text-purple-600 font-bold">10 Feb 2025</p>
+                </div>
+              </div>
+
+              <!-- Date Item 5 -->
+              <div class="flex items-center space-x-4 group">
+                <div
+                  class="bg-orange-100 rounded-lg p-3 group-hover:bg-orange-200 transition-colors"
+                >
+                  <i class="bx bx-timer text-2xl text-orange-600"></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-sm font-semibold text-gray-800">
+                    Registration Closes
+                  </h3>
+                  <p class="text-orange-600 font-bold">20 Feb 2025</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Partners Section -->
+          <div class="sponsors-section mt-8">
+            <h2
+              class="mt-12 text-2xl sm:text-3xl font-bold text-blue-700 mb-6 sm:mb-8"
+            >
+              Our Partners
+            </h2>
+            <div class="space-y-8">
+              <!-- Platinum Sponsors -->
+              <div class="bg-white p-6 rounded-xl shadow-lg">
+                <h3
+                  class="text-lg font-semibold text-gray-800 mb-4 flex items-center"
+                >
+                  <i class="bx bxs-medal text-2xl text-blue-600 mr-2"></i>
+                  Publishers
+                </h3>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="group">
+                    <div
+                      class="bg-gray-50 p-4 rounded-lg hover:shadow-md transition-all duration-300 flex items-center justify-center"
+                    >
+                      <img
+                        src="assets/sponsor1.png"
+                        alt="Sponsor 1"
+                        class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300"
+                      />
+                    </div>
+                  </div>
+                  <div class="group">
+                    <div
+                      class="bg-gray-50 p-4 rounded-lg hover:shadow-md transition-all duration-300 flex items-center justify-center"
+                    >
+                      <img
+                        src="assets/sponsor2.png"
+                        alt="Sponsor 2"
+                        class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+          <!-- Explore More Section Starts -->
+          <div class="space-y-4 mt-12">
+            <h2
+              class="text-2xl sm:text-3xl font-bold text-blue-700 mb-6 sm:mb-8"
+            >
+              Explore More
+            </h2>
+              <a href="about-university.html" class="block group">
+              <div
+                class="card-hover bg-white p-4 rounded-xl shadow-lg border-l-4 border-transparent hover:border-blue-500 transition-all duration-300"
+              >
+                <div class="flex items-center space-x-4">
+                  <div class="bg-blue-100 p-3 rounded-lg">
+                    <i class="bx bxs-graduation text-2xl text-blue-600"></i>
+                  </div>
+                  <div class="flex-1">
+                    <h3
+                      class="text-lg font-bold text-blue-700 group-hover:text-blue-800"
+                    >
+                      About Us MMMUT
+                    </h3>
+                    <p class="text-gray-600 text-sm">
+                      Discover our university's rich legacy and vision
+                    </p>
+                  </div>
+                  <i
+                    class="bx bx-right-arrow-alt text-2xl text-blue-500 group-hover:transform group-hover:translate-x-2 transition-transform"
+                  ></i>
+                </div>
+              </div>
+            </a>
+
+            <a href="about-it-department.html" class="block group">
+              <div
+                class="card-hover bg-white p-4 rounded-xl shadow-lg border-l-4 border-transparent hover:border-blue-500 transition-all duration-300"
+              >
+                <div class="flex items-center space-x-4">
+                  <div class="bg-blue-100 p-3 rounded-lg">
+                    <i class="bx bx-code-alt text-2xl text-blue-600"></i>
+                  </div>
+                  <div class="flex-1">
+                    <h3
+                      class="text-lg font-bold text-blue-700 group-hover:text-blue-800"
+                    >
+                      IT Department
+                    </h3>
+                    <p class="text-gray-600 text-sm">
+                      Explore our cutting-edge IT initiatives
+                    </p>
+                  </div>
+                  <i
+                    class="bx bx-right-arrow-alt text-2xl text-blue-500 group-hover:transform group-hover:translate-x-2 transition-transform"
+                  ></i>
+                </div>
+              </div>
+            </a>
+
+            <a href="about-math-department.html" class="block group">
+              <div
+                class="card-hover bg-white p-4 rounded-xl shadow-lg border-l-4 border-transparent hover:border-blue-500 transition-all duration-300"
+              >
+                <div class="flex items-center space-x-4">
+                  <div class="bg-blue-100 p-3 rounded-lg">
+                    <i class="bx bx-math text-2xl text-blue-600"></i>
+                  </div>
+                  <div class="flex-1">
+                    <h3
+                      class="text-lg font-bold text-blue-700 group-hover:text-blue-800"
+                    >
+                      Math Department
+                    </h3>
+                    <p class="text-gray-600 text-sm">
+                      Discover excellence in Mathematics
+                    </p>
+                  </div>
+                  <i
+                    class="bx bx-right-arrow-alt text-2xl text-blue-500 group-hover:transform group-hover:translate-x-2 transition-transform"
+                  ></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+
+          <!-- Nearest Places -->
+          <div class="mt-8" data-aos="fade-up" data-aos-delay="300">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div class="p-6">
+                <h3
+                  class="text-lg font-semibold text-gray-800 mb-6 flex items-center"
+                >
+                  <i class="bx bx-map-pin text-2xl text-blue-600 mr-2"></i>
+                  Nearest Places to Visit
+                </h3>
+
+                <!-- Places Grid -->
+                <div class="space-y-6">
+                  <!-- Religious Places -->
+                  <div class="space-y-4">
+                    <h4
+                      class="text-sm font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      Religious Places
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <!-- Gorakhnath Temple -->
+                      <div
+                        class="group bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-all duration-300"
+                      >
+                        <div class="aspect-w-16 aspect-h-9 relative">
+                          <img
+                            src="assets/gorakhnath-temple.jpg"
+                            alt="Gorakhnath Temple"
+                            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+                          ></div>
+                        </div>
+                        <div class="p-4">
+                          <h5 class="font-semibold text-gray-800">
+                            Gorakhnath Temple
+                          </h5>
+                          <div
+                            class="flex items-center mt-2 text-sm text-gray-600"
+                          >
+                            <i class="bx bx-map text-blue-500 mr-1"></i>
+                            <span>Distance: </span>
+                            <span
+                              class="ml-1 px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-medium"
+                            >
+                              10 Km
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Ayodhya Dham -->
+                      <div
+                        class="group bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-all duration-300"
+                      >
+                        <div class="aspect-w-16 aspect-h-9 relative">
+                          <img
+                            src="assets/ayodhya.jpg"
+                            alt="Ayodhya Dham"
+                            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+                          ></div>
+                        </div>
+                        <div class="p-4">
+                          <h5 class="font-semibold text-gray-800">
+                            Ayodhya Dham
+                          </h5>
+                          <div
+                            class="flex items-center mt-2 text-sm text-gray-600"
+                          >
+                            <i class="bx bx-map text-blue-500 mr-1"></i>
+                            <span>Distance: </span>
+                            <span
+                              class="ml-1 px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-medium"
+                            >
+                              155 Km
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Historical Places -->
+                  <div class="space-y-4">
+                    <h4
+                      class="text-sm font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      Historical Places
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <!-- Geeta Press -->
+                      <div
+                        class="group bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-all duration-300"
+                      >
+                        <div class="aspect-w-16 aspect-h-9 relative">
+                          <img
+                            src="assets/geeta-press.jpg"
+                            alt="Geeta Press"
+                            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+                          ></div>
+                        </div>
+                        <div class="p-4">
+                          <h5 class="font-semibold text-gray-800">
+                            Geeta Press
+                          </h5>
+                          <div
+                            class="flex items-center mt-2 text-sm text-gray-600"
+                          >
+                            <i class="bx bx-map text-blue-500 mr-1"></i>
+                            <span>Distance: </span>
+                            <span
+                              class="ml-1 px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-medium"
+                            >
+                              15 Km
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Maghar -->
+                      <div
+                        class="group bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-all duration-300"
+                      >
+                        <div class="aspect-w-16 aspect-h-9 relative">
+                          <img
+                            src="assets/maghar.jpg"
+                            alt="Maghar"
+                            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+                          ></div>
+                        </div>
+                        <div class="p-4">
+                          <h5 class="font-semibold text-gray-800">Maghar</h5>
+                          <div
+                            class="flex items-center mt-2 text-sm text-gray-600"
+                          >
+                            <i class="bx bx-map text-blue-500 mr-1"></i>
+                            <span>Distance: </span>
+                            <span
+                              class="ml-1 px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-medium"
+                            >
+                              35 Km
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Buddhist Circuit -->
+                  <div class="space-y-4">
+                    <h4
+                      class="text-sm font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      Buddhist Circuit
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <!-- Kushinagar -->
+                      <div
+                        class="group bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-all duration-300"
+                      >
+                        <div class="aspect-w-16 aspect-h-9 relative">
+                          <img
+                            src="assets/kushinagar.jpg"
+                            alt="Kushinagar"
+                            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+                          ></div>
+                        </div>
+                        <div class="p-4">
+                          <h5 class="font-semibold text-gray-800">
+                            Kushinagar
+                          </h5>
+                          <div
+                            class="flex items-center mt-2 text-sm text-gray-600"
+                          >
+                            <i class="bx bx-map text-blue-500 mr-1"></i>
+                            <span>Distance: </span>
+                            <span
+                              class="ml-1 px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-medium"
+                            >
+                              60 Km
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Lumbini -->
+                      <div
+                        class="group bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-all duration-300"
+                      >
+                        <div class="aspect-w-16 aspect-h-9 relative">
+                          <img
+                            src="assets/lumbini.jpg"
+                            alt="Lumbini"
+                            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+                          ></div>
+                        </div>
+                        <div class="p-4">
+                          <h5 class="font-semibold text-gray-800">
+                            Lumbini, Nepal
+                          </h5>
+                          <div
+                            class="flex items-center mt-2 text-sm text-gray-600"
+                          >
+                            <i class="bx bx-map text-blue-500 mr-1"></i>
+                            <span>Distance: </span>
+                            <span
+                              class="ml-1 px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-medium"
+                            >
+                              130 Km
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
     <!-- Scroll to top button -->
     <button
@@ -1368,7 +1057,7 @@
       <div class="container mx-auto px-4">
         <!-- Main Footer Content -->
         <div class="grid md:grid-cols-4 gap-8 mb-8">
-          <!-- About Column -->
+          <!-- About Us Column -->
           <div class="space-y-4">
             <div class="flex items-center space-x-2 mb-6">
               <img
@@ -1401,7 +1090,7 @@
                   href="/about.html"
                   class="text-gray-400 hover:text-blue-400 transition-colors flex items-center"
                 >
-                  <i class="bx bx-chevron-right mr-2"></i>About Conference
+                  <i class="bx bx-chevron-right mr-2"></i>About Us Conference
                 </a>
               </li>
               <li>
@@ -1529,5 +1218,10 @@
         </div>
       </div>
     </footer>
-  </body>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="script.js"></script>
+</body>
 </html>

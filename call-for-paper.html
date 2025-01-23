@@ -22,6 +22,8 @@
     />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="script.js" />
     <style>
       :root {
         --primary-color: #1a237e;
@@ -101,6 +103,7 @@
         scroll-behavior: smooth;
       }
     </style>
+
     <script>
       // Store references to frequently accessed elements
       const mobileMenu = {
@@ -312,124 +315,121 @@
     </script>
   </head>
   <body>
-    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-lg z-50">
-      <div class="mx-auto flex justify-between items-center px-4 md:px-8 h-16">
-        <!-- Logo -->
-        <a href="/" class="flex items-center space-x-2">
-          <img
-            src="assets/logommm.jpg"
-            alt="ICETITSC Logo"
-            class="h-10 w-auto"
-          />
-          <span
-            class="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
-            >ICETITSC</span
-          >
-        </a>
-
-        <!-- Mobile Menu Button -->
-        <button
-          id="mobile-menu-button"
-          class="block md:hidden p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 z-50"
-          aria-label="Open Menu"
-          aria-expanded="false"
-          onclick="toggleMobileMenu()"
-        >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              id="menu-icon"
-              class="block"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
+    <!-- Navbar -->
+    <section class="navigation">
+      <div class="nav-container">
+        <div class="brand">
+          <a href="#!">
+            <img
+              src="assets/logommm.jpg"
+              alt="ICETITSC Logo"
+              class="h-10 w-auto rounded inline-block align-middle"
             />
-            <path
-              id="close-icon"
-              class="hidden"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-
-        <!-- Main Menu (Desktop) -->
-        <div class="hidden md:flex items-center space-x-1">
-          <a
-            href="/"
-            class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
-            >Home</a
-          >
-          <a
-            href="/about.html"
-            class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
-            >About</a
-          >
-          <a
-            href="/call-for-paper.html"
-            class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
-            >Call for Paper</a
-          >
-
-          <!-- Committee Dropdown -->
-          <div class="relative group">
-            <button
-              class="dropdown-trigger px-3 py-2 text-gray-700 hover:text-blue-600 flex items-center"
-              aria-expanded="false"
-              onclick="window.open('/committee-patrons.html', '_self')"
+            <span class="text-xl font-bold text-white ml-2 align-middle"
+              >ICETITSC-2025</span
             >
-              Committee
-              <svg
-                class="w-4 h-4 ml-1 transition-transform duration-200"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                ></path>
-              </svg>
-            </button>
-            <div
-              class="dropdown-content absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-lg opacity-0 invisible transform -translate-y-2 transition-all duration-200"
-            >
-              <a
-                href="/committee-patrons.html"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 rounded-lg"
-                >Patrons & Chairs</a
-              >
-              <a
-                href="/committee-technical.html"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 rounded-lg"
-                >Technical Committee</a
-              >
+          </a>
+        </div>
+        <nav>
+          <div class="nav-mobile">
+            <a id="navbar-toggle" href="#!"><span></span></a>
+          </div>
+          <ul class="nav-list">
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+            <li>
+              <a href="about.html">About Us</a>
+              <!-- <ul class="navbar-dropdown">
+                <li><a href="about-university.html">About University</a></li>
+                <li><a href="about-it-department.html">IT Department</a></li>
+                <li>
+                  <a href="about-math-department.html">Math Department</a>
+                </li>
+              </ul> -->
+            </li>
+            <li>
+              <a href="call-for-paper.html">Call for Papers</a>
+              <!-- <ul class="navbar-dropdown">
+                <li><a href="call-for-paper.html">Paper Submission</a></li>
+                <li><a href="guidelines.html">Guidelines</a></li>
+                <li><a href="tracks.html">Conference Tracks</a></li>
+              </ul> -->
+            </li>
+            <li>
+              <a href="committee-patrons.html">Committee</a>
+            </li>
+            <li>
+              <a href="registration.html">Registration</a>
+            </li>
+            <li>
+              <a href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+    <div class="announcement-bar">
+      <div class="announcement-container">
+        <div class="announcement-wrapper">
+          <!-- Important Announcement -->
+          <div class="announcement-item">
+            <div class="announcement-icon">
+              <div class="pulse-ring"></div>
+              <i class="bx bx-news text-blue-500"></i>
+            </div>
+            <div class="announcement-content">
+              <span class="announcement-label">New</span>
+              Welcome to ICETITSC-2025
             </div>
           </div>
 
-          <!-- Register & Submit -->
-          <a
-            href="/registration.html"
-            class="ml-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
-            >Register</a
-          >
-          <a
-            href="/submit-paper.html"
-            class="ml-2 px-4 py-2 text-sm font-medium text-blue-600 border border-blue-600 rounded-lg"
-            >Submit Paper</a
-          >
+          <!-- Paper Submission -->
+          <div class="announcement-item">
+            <div class="announcement-icon">
+              <i class="bx bx-calendar text-green-500"></i>
+            </div>
+            <div class="announcement-content">
+              <span class="announcement-label">Deadline</span>
+              Paper Submission: December 31, 2024
+            </div>
+          </div>
+
+          <!-- Registration -->
+          <div class="announcement-item">
+            <div class="announcement-icon">
+              <i class="bx bx-user-plus text-purple-500"></i>
+            </div>
+            <div class="announcement-content">
+              <span class="announcement-label">Registration</span>
+              Early Bird Registration Now Open
+            </div>
+          </div>
+
+          <!-- Conference Venue -->
+          <div class="announcement-item">
+            <div class="announcement-icon">
+              <i class="bx bx-map-pin text-red-500"></i>
+            </div>
+            <div class="announcement-content">
+              <span class="announcement-label">Venue</span>
+              MMMUT, Gorakhpur
+            </div>
+          </div>
+
+          <!-- Important Updates -->
+          <div class="announcement-item">
+            <div class="announcement-icon">
+              <i class="bx bx-badge-check text-amber-500"></i>
+            </div>
+            <div class="announcement-content">
+              <span class="announcement-label">Achievement</span>
+              NAAC Grade A University
+            </div>
+          </div>
         </div>
       </div>
-    </nav>
+    </div>
 
     <!-- Add Mobile Menu -->
     <div
@@ -444,12 +444,22 @@
       <div class="p-6 space-y-4">
         <a href="/" class="block text-gray-700 hover:text-blue-600">Home</a>
         <a href="/about.html" class="block text-gray-700 hover:text-blue-600"
-          >About</a
+          >About Us</a
         >
         <a
           href="/call-for-paper.html"
-          class="block text-gray-700 hover:text-blue-600"
+          class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
           >Call for Paper</a
+        >
+        <a
+          href="/guidelines.html"
+          class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
+          >Guidelines</a
+        >
+        <a
+          href="/speakers.html"
+          class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
+          >Speakers</a
         >
 
         <!-- Mobile Committee Dropdown -->
@@ -484,7 +494,7 @@
               >Patrons & Chairs</a
             >
             <a
-              href="/committee-technical.html"
+              href="/committee-patrons.html"
               class="block text-gray-600 hover:text-blue-600"
               >Technical Committee</a
             >
@@ -511,8 +521,8 @@
 
     <div class="pt-16">
       <!-- Hero Section -->
-      <section class="hero-section">
-        <div class="container text-center">
+      <section class="bg-gray-50 pt-[130px] container">
+        <div class="text-center">
           <h1 class="display-4 mb-4">Call for Papers</h1>
           <h2 class="h3 mb-4">ICICAT 2024</h2>
           <p class="lead">
@@ -522,7 +532,7 @@
           <p class="mb-4">23-24 November 2024 | Gorakhpur, India</p>
           <a
             href="https://cmt3.research.microsoft.com"
-            class="btn btn-light btn-lg"
+            class="btn btn-light btn-lg bg-blue-600 text-white hover:bg-blue-700"
             >Submit Paper</a
           >
         </div>

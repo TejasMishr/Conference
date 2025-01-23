@@ -3,1117 +3,538 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Conference - ICETITSC-2025</title>
+    <title>About - International Conference 2024</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Add custom styles -->
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/script.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-      .gradient-overlay {
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+      :root {
+        --primary-color: #1a365d; /* Deeper blue for primary text */
+        --accent-color: #2b6cb0; /* Professional blue for accents */
+        --secondary-color: #4a5568; /* Muted blue-gray for secondary text */
+        --text-color: #2d3748; /* Dark blue-gray for body text */
+        --light-bg: #f7fafc; /* Very light blue-gray for backgrounds */
+        --card-bg: #ffffff; /* Pure white for cards */
+        --stat-accent: #3182ce; /* Bright blue for statistics */
+        --hero-overlay: linear-gradient(
+          rgba(26, 54, 93, 0.85),
+          rgba(26, 54, 93, 0.95)
+        );
       }
-      .card-hover {
-        transform: translateY(0);
+
+      body {
+        color: var(--text-color);
+        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      }
+
+      .hero-section {
+        background: var(--hero-overlay), url("assets/images/university.jpg");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 120px 0;
+        position: relative;
+      }
+
+      .hero-pattern {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background: linear-gradient(
+              135deg,
+              var(--light-bg) 25%,
+              transparent 25%
+            ) -20px 0,
+          linear-gradient(225deg, var(--light-bg) 25%, transparent 25%) -20px 0;
+        background-size: 40px 40px;
+      }
+
+      .section-padding {
+        padding: 100px 0;
+      }
+
+      .section-title {
+        color: var(--primary-color);
+        margin-bottom: 40px;
+        position: relative;
+        padding-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-weight: 600;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100px;
+        height: 3px;
+        background-color: var(--accent-color);
+      }
+
+      .card {
+        border: none;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         transition: all 0.3s ease;
+        border-radius: 15px;
+        overflow: hidden;
+        background-color: var(--card-bg);
       }
-      .card-hover:hover {
+
+      .card:hover {
         transform: translateY(-5px);
-      }
-      @media (max-width: 768px) {
-        .hero-title {
-          font-size: 2rem;
-          line-height: 1.2;
-        }
-        .hero-subtitle {
-          display: none; /* Hide subtitle on mobile */
-        }
-      }
-      @media (min-width: 769px) {
-        .hero-subtitle {
-          display: block; /* Show subtitle on larger screens */
-        }
-      }
-      /* Add navbar styles */
-      .group:hover .group-hover\:opacity-100 {
-        animation: fadeIn 0.2s ease-out;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
       }
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      .card-icon {
+        width: 50px;
+        height: 50px;
+        background-color: var(--accent-color);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
       }
 
-      /* Smooth scrolling */
-      html {
-        scroll-behavior: smooth;
+      .card-icon i {
+        color: white;
+      }
+
+      .bg-light-gray {
+        background-color: var(--light-bg);
+      }
+
+      .icon-box {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: var(--accent-color);
+        border-radius: 10px;
+        color: white;
+      }
+
+      .department-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 15px 15px 0 0;
+      }
+
+      .stats-container {
+        background-color: rgba(49, 130, 206, 0.08);
+        border: 1px solid rgba(49, 130, 206, 0.1);
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 30px;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 15px;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--stat-accent);
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: var(--secondary-color);
+        font-weight: 500;
+        margin-top: 5px;
+      }
+
+      .hero-section h1 {
+        color: #ffffff;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .hero-section .lead {
+        color: #e2e8f0;
+      }
+
+      .card p {
+        color: var(--text-color);
+        line-height: 1.7;
+      }
+
+      /* New styles for better typography */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: var(--primary-color);
+      }
+
+      /* Enhanced card content styling */
+      .card-content {
+        color: var(--text-color);
+      }
+
+      /* Department title styling */
+      .department-title {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Link styling */
+      a {
+        color: var(--accent-color);
+        transition: color 0.3s ease;
+      }
+
+      a:hover {
+        color: var(--primary-color);
+      }
+
+      /* Additional text styles */
+      .text-muted {
+        color: var(--secondary-color) !important;
+      }
+
+      .text-primary {
+        color: var(--primary-color) !important;
+      }
+
+      .text-accent {
+        color: var(--accent-color) !important;
       }
     </style>
-    <!-- Add navbar script -->
-    <script>
-      // Store references to frequently accessed elements
-      const mobileMenu = {
-        menu: null,
-        button: null,
-        overlay: null,
-        menuIcon: null,
-        closeIcon: null,
-        dropdowns: new Map(),
-        isOpen: false,
-      };
-
-      // Initialize mobile menu elements and event listeners
-      document.addEventListener("DOMContentLoaded", function () {
-        try {
-          initializeMobileMenu();
-          initializeDesktopDropdowns();
-          setupResizeHandler();
-          setupKeyboardNavigation();
-        } catch (error) {
-          console.error("Error initializing navigation:", error);
-        }
-      });
-
-      function initializeMobileMenu() {
-        try {
-          // Cache DOM elements
-          mobileMenu.menu = document.getElementById("mobile-menu");
-          mobileMenu.button = document.getElementById("mobile-menu-button");
-          mobileMenu.overlay = document.getElementById("mobile-menu-overlay");
-          mobileMenu.menuIcon = document.getElementById("menu-icon");
-          mobileMenu.closeIcon = document.getElementById("close-icon");
-
-          if (!mobileMenu.menu || !mobileMenu.button || !mobileMenu.overlay) {
-            throw new Error("Required mobile menu elements not found");
-          }
-
-          // Add click event listeners
-          mobileMenu.button.addEventListener("click", (e) => {
-            e.stopPropagation(); // Prevent event bubbling
-            toggleMobileMenu();
-          });
-
-          mobileMenu.overlay.addEventListener("click", closeMobileMenu);
-
-          // Close menu when clicking outside
-          document.addEventListener("click", function (event) {
-            if (
-              mobileMenu.isOpen &&
-              !mobileMenu.menu.contains(event.target) &&
-              !mobileMenu.button.contains(event.target)
-            ) {
-              closeMobileMenu();
-            }
-          });
-
-          // Handle touch events
-          document.addEventListener("touchstart", handleTouchStart, {
-            passive: true,
-          });
-          document.addEventListener("touchmove", handleTouchMove, {
-            passive: true,
-          });
-        } catch (error) {
-          console.error("Error initializing mobile menu:", error);
-        }
-      }
-
-      function toggleMobileMenu() {
-        try {
-          const { menu, overlay, menuIcon, closeIcon } = mobileMenu;
-          const body = document.body;
-
-          // Toggle menu state
-          mobileMenu.isOpen = !mobileMenu.isOpen;
-
-          // Toggle classes with error checking
-          if (menu && overlay && menuIcon && closeIcon) {
-            if (mobileMenu.isOpen) {
-              // Opening menu
-              menu.classList.remove("translate-x-full");
-              menu.classList.add("translate-x-0");
-              overlay.classList.remove("opacity-0", "pointer-events-none");
-              menuIcon.classList.add("hidden");
-              closeIcon.classList.remove("hidden");
-              body.classList.add("overflow-hidden");
-            } else {
-              // Closing menu
-              menu.classList.remove("translate-x-0");
-              menu.classList.add("translate-x-full");
-              overlay.classList.add("opacity-0", "pointer-events-none");
-              menuIcon.classList.remove("hidden");
-              closeIcon.classList.add("hidden");
-              body.classList.remove("overflow-hidden");
-            }
-
-            // Update ARIA attributes
-            mobileMenu.button.setAttribute("aria-expanded", mobileMenu.isOpen);
-
-            // Close all open dropdowns when closing menu
-            if (!mobileMenu.isOpen) {
-              closeAllMobileDropdowns();
-            }
-          }
-        } catch (error) {
-          console.error("Error toggling mobile menu:", error);
-        }
-      }
-
-      function closeMobileMenu() {
-        try {
-          if (mobileMenu.isOpen) {
-            const { menu, overlay, menuIcon, closeIcon } = mobileMenu;
-            const body = document.body;
-
-            mobileMenu.isOpen = false;
-
-            menu?.classList.add("translate-x-full");
-            overlay?.classList.add("opacity-0", "pointer-events-none");
-            menuIcon?.classList.remove("hidden");
-            closeIcon?.classList.add("hidden");
-            body?.classList.remove("overflow-hidden");
-
-            mobileMenu.button.setAttribute("aria-expanded", "false");
-            closeAllMobileDropdowns();
-          }
-        } catch (error) {
-          console.error("Error closing mobile menu:", error);
-        }
-      }
-
-      function toggleMobileDropdown(dropdownId) {
-        try {
-          const dropdown = document.getElementById(dropdownId);
-          const button = dropdown?.previousElementSibling;
-          const icon = button?.querySelector("svg");
-
-          if (!dropdown || !button || !icon) {
-            throw new Error(
-              `Dropdown elements not found for ID: ${dropdownId}`
-            );
-          }
-
-          const isOpen = !dropdown.classList.contains("hidden");
-
-          // Close other open dropdowns
-          closeAllMobileDropdowns(dropdownId);
-
-          // Toggle current dropdown
-          dropdown.classList.toggle("hidden");
-          icon.style.transform = isOpen ? "rotate(0deg)" : "rotate(180deg)";
-          button.setAttribute("aria-expanded", !isOpen);
-
-          // Store dropdown state
-          mobileMenu.dropdowns.set(dropdownId, !isOpen);
-        } catch (error) {
-          console.error("Error toggling mobile dropdown:", error);
-        }
-      }
-
-      function closeAllMobileDropdowns(exceptId = null) {
-        try {
-          mobileMenu.dropdowns.forEach((isOpen, dropdownId) => {
-            if (dropdownId !== exceptId && isOpen) {
-              const dropdown = document.getElementById(dropdownId);
-              const button = dropdown?.previousElementSibling;
-              const icon = button?.querySelector("svg");
-
-              if (dropdown && button && icon) {
-                dropdown.classList.add("hidden");
-                icon.style.transform = "rotate(0deg)";
-                button.setAttribute("aria-expanded", "false");
-                mobileMenu.dropdowns.set(dropdownId, false);
-              }
-            }
-          });
-        } catch (error) {
-          console.error("Error closing mobile dropdowns:", error);
-        }
-      }
-
-      function initializeDesktopDropdowns() {
-        try {
-          const dropdownButtons =
-            document.querySelectorAll(".dropdown-trigger");
-
-          dropdownButtons.forEach((button) => {
-            const dropdown = button.nextElementSibling;
-            if (!dropdown) return;
-
-            let timeoutId;
-
-            // Show dropdown on hover/focus
-            const showDropdown = () => {
-              clearTimeout(timeoutId);
-              dropdown.classList.remove(
-                "opacity-0",
-                "invisible",
-                "-translate-y-2"
-              );
-              dropdown.classList.add("opacity-100", "visible", "translate-y-0");
-              button.setAttribute("aria-expanded", "true");
-            };
-
-            // Hide dropdown
-            const hideDropdown = () => {
-              timeoutId = setTimeout(() => {
-                dropdown.classList.add(
-                  "opacity-0",
-                  "invisible",
-                  "-translate-y-2"
-                );
-                dropdown.classList.remove(
-                  "opacity-100",
-                  "visible",
-                  "translate-y-0"
-                );
-                button.setAttribute("aria-expanded", "false");
-              }, 150);
-            };
-
-            // Mouse events
-            button.parentElement.addEventListener("mouseenter", showDropdown);
-            button.parentElement.addEventListener("mouseleave", hideDropdown);
-
-            // Keyboard/Focus events
-            button.addEventListener("focus", showDropdown);
-            button.addEventListener("blur", hideDropdown);
-          });
-        } catch (error) {
-          console.error("Error initializing desktop dropdowns:", error);
-        }
-      }
-
-      function setupResizeHandler() {
-        let resizeTimeout;
-
-        window.addEventListener("resize", () => {
-          // Debounce resize handler
-          clearTimeout(resizeTimeout);
-          resizeTimeout = setTimeout(() => {
-            try {
-              if (window.innerWidth >= 768) {
-                // md breakpoint
-                closeMobileMenu();
-              }
-            } catch (error) {
-              console.error("Error handling window resize:", error);
-            }
-          }, 100);
-        });
-      }
-
-      function setupKeyboardNavigation() {
-        try {
-          // Close mobile menu on Escape key
-          document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-              closeMobileMenu();
-            }
-          });
-
-          // Add keyboard navigation for dropdowns
-          const dropdownButtons =
-            document.querySelectorAll(".dropdown-trigger");
-          dropdownButtons.forEach((button) => {
-            button.addEventListener("keydown", (event) => {
-              const dropdown = button.nextElementSibling;
-              if (!dropdown) return;
-
-              if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                dropdown.classList.toggle("hidden");
-                button.setAttribute(
-                  "aria-expanded",
-                  dropdown.classList.contains("hidden") ? "false" : "true"
-                );
-              }
-            });
-          });
-        } catch (error) {
-          console.error("Error setting up keyboard navigation:", error);
-        }
-      }
-
-      // Handle committee link clicks
-      function handleCommitteeClick(event, path) {
-        event.preventDefault();
-        window.location.href = path;
-      }
-
-      // Initialize AOS
-      document.addEventListener("DOMContentLoaded", function () {
-        AOS.init();
-      });
-
-      // Add loading animation
-      document.addEventListener("DOMContentLoaded", function () {
-        document.body.classList.add("loaded");
-      });
-
-      // Add intersection observer for better performance
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("loaded");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.1,
-        }
-      );
-
-      document.querySelectorAll("[data-aos]").forEach((element) => {
-        element.classList.add("loading");
-        observer.observe(element);
-      });
-
-      // Improve scroll performance
-      let scrollTimeout;
-      window.addEventListener(
-        "scroll",
-        () => {
-          if (!scrollTimeout) {
-            window.requestAnimationFrame(() => {
-              // Update scroll-based elements
-              const scrollButton = document.getElementById("scroll-top");
-              if (document.documentElement.scrollTop > 100) {
-                scrollButton.classList.remove("hidden");
-              } else {
-                scrollButton.classList.add("hidden");
-              }
-              scrollTimeout = null;
-            });
-            scrollTimeout = true;
-          }
-        },
-        { passive: true }
-      );
-
-      // Add touch gesture support
-      let touchStartX = 0;
-      let touchEndX = 0;
-
-      function handleTouchStart(event) {
-        touchStartX = event.touches[0].clientX;
-      }
-
-      function handleTouchMove(event) {
-        touchEndX = event.touches[0].clientX;
-        handleSwipe();
-      }
-
-      function handleSwipe() {
-        const swipeThreshold = 50;
-        const swipeDistance = touchEndX - touchStartX;
-
-        if (Math.abs(swipeDistance) > swipeThreshold) {
-          if (mobileMenu.isOpen && swipeDistance > 0) {
-            // Swipe right to close
-            closeMobileMenu();
-          } else if (!mobileMenu.isOpen && swipeDistance < 0) {
-            // Swipe left to open
-            toggleMobileMenu();
-          }
-        }
-      }
-
-      // Add this script for better image loading
-      document.addEventListener("DOMContentLoaded", function () {
-        const heroSection = document.querySelector(".hero-section");
-        const img = new Image();
-        img.src = "/assets/a61.jpg";
-        img.onload = function () {
-          heroSection.classList.add("loaded");
-        };
-      });
-    </script>
   </head>
-  <body class="bg-gradient-to-br from-gray-50 to-gray-100">
-    <!-- Add navbar HTML -->
-    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-lg z-50">
-      <div class="mx-auto flex justify-between items-center px-4 md:px-8 h-16">
-        <!-- Logo -->
-        <a href="/" class="flex items-center space-x-2">
-          <img
-            src="assets/logommm.jpg"
-            alt="ICETITSC Logo"
-            class="h-10 w-auto"
-          />
-          <span
-            class="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
-            >ICETITSC</span
-          >
-        </a>
-
-        <!-- Mobile Menu Button -->
-        <button
-          id="mobile-menu-button"
-          class="block md:hidden p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 z-50"
-          aria-label="Open Menu"
-          aria-expanded="false"
-          onclick="toggleMobileMenu()"
-        >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              id="menu-icon"
-              class="block"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
+  <body>
+    <!-- Navbar -->
+    <section class="navigation">
+      <div class="nav-container">
+        <div class="brand">
+          <a href="#!">
+            <img
+              src="assets/logommm.jpg"
+              alt="ICETITSC Logo"
+              class="h-10 w-auto rounded inline-block align-middle"
             />
-            <path
-              id="close-icon"
-              class="hidden"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-
-        <!-- Main Menu (Desktop) -->
-        <div class="hidden md:flex items-center space-x-1">
-          <a
-            href="/"
-            class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
-            >Home</a
-          >
-          <a
-            href="/about.html"
-            class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
-            >About</a
-          >
-          <a
-            href="/call-for-paper.html"
-            class="px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
-            >Call for Paper</a
-          >
-
-          <!-- Committee Dropdown -->
-          <div class="relative group">
-            <button
-              class="dropdown-trigger px-3 py-2 text-gray-700 hover:text-blue-600 flex items-center"
-              aria-expanded="false"
-              onclick="window.open('/committee-patrons.html', '_self')"
+            <span class="text-xl font-bold text-white ml-2 align-middle"
+              >ICETITSC-2025</span
             >
-              Committee
-              <svg
-                class="w-4 h-4 ml-1 transition-transform duration-200"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                ></path>
-              </svg>
-            </button>
-            <div
-              class="dropdown-content absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-lg opacity-0 invisible transform -translate-y-2 transition-all duration-200"
-            >
-              <a
-                href="/committee-patrons.html"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 rounded-lg"
-                >Patrons & Chairs</a
-              >
-              <a
-                href="/committee-technical.html"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 rounded-lg"
-                >Technical Committee</a
-              >
+          </a>
+        </div>
+        <nav>
+          <div class="nav-mobile">
+            <a id="navbar-toggle" href="#!"><span></span></a>
+          </div>
+          <ul class="nav-list">
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+            <li>
+              <a href="about.html">About Us</a>
+              <!-- <ul class="navbar-dropdown">
+                  <li><a href="about-university.html">About University</a></li>
+                  <li><a href="about-it-department.html">IT Department</a></li>
+                  <li><a href="about-math-department.html">Math Department</a></li>
+                </ul> -->
+            </li>
+            <li>
+              <a href="call-for-paper.html">Call for Papers</a>
+              <ul class="navbar-dropdown">
+                <li><a href="call-for-paper.html">Paper Submission</a></li>
+                <li><a href="guidelines.html">Guidelines</a></li>
+                <li><a href="tracks.html">Conference Tracks</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="committee-patrons.html">Committee</a>
+            </li>
+            <li>
+              <a href="registration.html">Registration</a>
+            </li>
+            <li>
+              <a href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+    <div class="announcement-bar">
+      <div class="announcement-container">
+        <div class="announcement-wrapper">
+          <!-- Important Announcement -->
+          <div class="announcement-item">
+            <div class="announcement-icon">
+              <div class="pulse-ring"></div>
+              <i class="bx bx-news text-blue-500"></i>
+            </div>
+            <div class="announcement-content">
+              <span class="announcement-label">New</span>
+              Welcome to ICETITSC-2025
             </div>
           </div>
 
-          <!-- Register & Submit -->
-          <a
-            href="/registration.html"
-            class="ml-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
-            >Register</a
-          >
-          <a
-            href="/submit-paper.html"
-            class="ml-2 px-4 py-2 text-sm font-medium text-blue-600 border border-blue-600 rounded-lg"
-            >Submit Paper</a
-          >
-        </div>
-      </div>
-    </nav>
-
-    <!-- Add padding to account for fixed navbar -->
-    <div class="pt-16">
-      <!-- Hero Section with University Image -->
-      <div class="relative h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden">
-        <img
-          src="assets/a61.jpg"
-          alt="MMMUT Campus"
-          class="w-full h-full object-cover"
-        />
-        <div
-          class="absolute inset-0 gradient-overlay flex items-center justify-center"
-        >
-          <div class="text-center px-4 max-w-4xl" data-aos="fade-up">
-            <h1
-              class="hero-title text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight"
-            >
-              About The Conference
-            </h1>
-            <p
-              class="hero-subtitle text-gray-200 text-base sm:text-lg md:text-xl max-w-2xl mx-auto"
-            >
-              Advancing the frontiers of Technology and Scientific Computing
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Main Content -->
-      <div class="container mx-auto px-4 py-12 lg:py-24">
-        <div class="mx-auto">
-          <div class="flex flex-col md:flex-row gap-8">
-            <!-- Conference Overview -->
-            <div
-              class="flex-1 bg-white rounded-2xl shadow-xl p-5 sm:p-6 md:p-8 lg:p-10 hover:shadow-2xl transition-shadow duration-300"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <h2
-                class="text-2xl sm:text-3xl font-bold text-blue-700 mb-6 sm:mb-8 border-b pb-4"
-              >
-                Conference Overview
-              </h2>
-              <div class="space-y-6 sm:space-y-8">
-                <p class="text-gray-700 leading-relaxed text-base sm:text-lg">
-                  The International Conference on Emerging Trends in Information
-                  Technology and Scientific Computing (ICETITSC-2025) is being
-                  organized by Madan Mohan Malaviya University of Technology,
-                  Gorakhpur, Uttar Pradesh, India. This prestigious event is
-                  jointly hosted by the Department of Information Technology &
-                  Computer Application and Department of Mathematics &
-                  Scientific Computing.
-                </p>
-
-                <div class="bg-blue-50 rounded-xl p-4 sm:p-6">
-                  <h3
-                    class="text-lg sm:text-xl font-semibold text-blue-700 mb-4"
-                  >
-                    Conference Topics
-                  </h3>
-                  <ul
-                    class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-700 text-sm sm:text-base"
-                  >
-                    <li class="flex items-center space-x-2">
-                      <i class="bx bx-check-circle text-blue-600"></i>
-                      <span>Advanced Computing and AI</span>
-                    </li>
-                    <li class="flex items-center space-x-2">
-                      <i class="bx bx-check-circle text-blue-600"></i>
-                      <span>Computer Vision & Pattern Recognition</span>
-                    </li>
-                    <li class="flex items-center space-x-2">
-                      <i class="bx bx-check-circle text-blue-600"></i>
-                      <span>Data Science and Analytics</span>
-                    </li>
-                    <li class="flex items-center space-x-2">
-                      <i class="bx bx-check-circle text-blue-600"></i>
-                      <span>Applied Mathematics & Algebra</span>
-                    </li>
-                    <li class="flex items-center space-x-2">
-                      <i class="bx bx-check-circle text-blue-600"></i>
-                      <span>Cryptography and Security</span>
-                    </li>
-                    <li class="flex items-center space-x-2">
-                      <i class="bx bx-check-circle text-blue-600"></i>
-                      <span>Operations Research</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div class="space-y-4">
-                  <p class="text-gray-700 leading-relaxed">
-                    The conference features distinguished keynote speakers,
-                    technical sessions, and paper presentations, creating an
-                    ideal platform for researchers, professionals, and students
-                    from across the globe to share their innovative ideas and
-                    research findings.
-                  </p>
-
-                  <p class="text-gray-700 leading-relaxed">
-                    ICETITSC-2025 aims to foster collaboration between academia
-                    and industry, promoting interdisciplinary research and
-                    practical applications while advancing the frontiers of IT
-                    and scientific computing.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Add Tracks Section after the existing content -->
-              <div class="mt-12" data-aos="fade-up">
-                <h2
-                  class="text-2xl sm:text-3xl font-bold text-blue-700 mb-8 border-b pb-4"
-                >
-                  Tracks of Conference
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <!-- Track 1 -->
-                  <div
-                    class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-l-4 border-blue-500"
-                  >
-                    <div class="flex items-start space-x-4">
-                      <div class="bg-blue-100 rounded-lg p-3">
-                        <i class="bx bx-chip text-2xl text-blue-600"></i>
-                      </div>
-                      <div>
-                        <h3 class="text-lg font-bold text-blue-700 mb-2">
-                          Track 1: Computing
-                        </h3>
-                        <div class="h-1 w-20 bg-blue-200 mb-3"></div>
-                        <p class="text-gray-600 text-sm">
-                          Advanced computing technologies and applications
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Track 2 -->
-                  <div
-                    class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-l-4 border-indigo-500"
-                  >
-                    <div class="flex items-start space-x-4">
-                      <div class="bg-indigo-100 rounded-lg p-3">
-                        <i class="bx bx-brain text-2xl text-indigo-600"></i>
-                      </div>
-                      <div>
-                        <h3 class="text-lg font-bold text-indigo-700 mb-2">
-                          Track 2: Artificial Intelligence
-                        </h3>
-                        <div class="h-1 w-20 bg-indigo-200 mb-3"></div>
-                        <p class="text-gray-600 text-sm">
-                          AI algorithms, machine learning, and neural networks
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Track 3 -->
-                  <div
-                    class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-l-4 border-purple-500"
-                  >
-                    <div class="flex items-start space-x-4">
-                      <div class="bg-purple-100 rounded-lg p-3">
-                        <i class="bx bx-camera text-2xl text-purple-600"></i>
-                      </div>
-                      <div>
-                        <h3 class="text-lg font-bold text-purple-700 mb-2">
-                          Track 3: Computer Vision
-                        </h3>
-                        <div class="h-1 w-20 bg-purple-200 mb-3"></div>
-                        <p class="text-gray-600 text-sm">
-                          Image processing and visual recognition systems
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Track 4 -->
-                  <div
-                    class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-l-4 border-pink-500"
-                  >
-                    <div class="flex items-start space-x-4">
-                      <div class="bg-pink-100 rounded-lg p-3">
-                        <i class="bx bx-data text-2xl text-pink-600"></i>
-                      </div>
-                      <div>
-                        <h3 class="text-lg font-bold text-pink-700 mb-2">
-                          Track 4: Data Science
-                        </h3>
-                        <div class="h-1 w-20 bg-pink-200 mb-3"></div>
-                        <p class="text-gray-600 text-sm">
-                          Big data analytics and data-driven insights
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Track 5 -->
-                  <div
-                    class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-l-4 border-cyan-500"
-                  >
-                    <div class="flex items-start space-x-4">
-                      <div class="bg-cyan-100 rounded-lg p-3">
-                        <i class="bx bx-trending-up text-2xl text-cyan-600"></i>
-                      </div>
-                      <div>
-                        <h3 class="text-lg font-bold text-cyan-700 mb-2">
-                          Track 5: Technology Trends
-                        </h3>
-                        <div class="h-1 w-20 bg-cyan-200 mb-3"></div>
-                        <p class="text-gray-600 text-sm">
-                          Emerging technologies and future innovations
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Track 6 -->
-                  <div
-                    class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-l-4 border-teal-500"
-                  >
-                    <div class="flex items-start space-x-4">
-                      <div class="bg-teal-100 rounded-lg p-3">
-                        <i class="bx bx-lock-alt text-2xl text-teal-600"></i>
-                      </div>
-                      <div>
-                        <h3 class="text-lg font-bold text-teal-700 mb-2">
-                          Track 6: Algebra, Cryptography and Computing
-                        </h3>
-                        <div class="h-1 w-20 bg-teal-200 mb-3"></div>
-                        <p class="text-gray-600 text-sm">
-                          Mathematical foundations and security systems
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Track 7 -->
-                  <div
-                    class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-l-4 border-orange-500"
-                  >
-                    <div class="flex items-start space-x-4">
-                      <div class="bg-orange-100 rounded-lg p-3">
-                        <i
-                          class="bx bx-line-chart text-2xl text-orange-600"
-                        ></i>
-                      </div>
-                      <div>
-                        <h3 class="text-lg font-bold text-orange-700 mb-2">
-                          Track 7: Operation Research & Queuing Theory
-                        </h3>
-                        <div class="h-1 w-20 bg-orange-200 mb-3"></div>
-                        <p class="text-gray-600 text-sm">
-                          Optimization and system performance analysis
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Track 8 -->
-                  <div
-                    class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border-l-4 border-green-500"
-                  >
-                    <div class="flex items-start space-x-4">
-                      <div class="bg-green-100 rounded-lg p-3">
-                        <i class="bx bx-function text-2xl text-green-600"></i>
-                      </div>
-                      <div>
-                        <h3 class="text-lg font-bold text-green-700 mb-2">
-                          Track 8: Differential Equation & Mathematical Modeling
-                        </h3>
-                        <div class="h-1 w-20 bg-green-200 mb-3"></div>
-                        <p class="text-gray-600 text-sm">
-                          Mathematical analysis and system modeling
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <!-- Paper Submission -->
+          <div class="announcement-item">
+            <div class="announcement-icon">
+              <i class="bx bx-calendar text-green-500"></i>
             </div>
+            <div class="announcement-content">
+              <span class="announcement-label">Deadline</span>
+              Paper Submission: December 31, 2024
+            </div>
+          </div>
 
-            <!-- Quick Links -->
-            <div class="w-full md:w-1/3" data-aos="fade-up">
-              <h2
-                class="text-2xl sm:text-3xl font-bold text-blue-700 mb-6 sm:mb-8"
-              >
-                Explore More
-              </h2>
-              <div class="space-y-4">
-                <a href="about-university.html" class="block group">
-                  <div
-                    class="card-hover bg-white p-4 rounded-xl shadow-lg border-l-4 border-transparent hover:border-blue-500 transition-all duration-300"
-                  >
-                    <div class="flex items-center space-x-4">
-                      <div class="bg-blue-100 p-3 rounded-lg">
-                        <i class="bx bxs-graduation text-2xl text-blue-600"></i>
-                      </div>
-                      <div class="flex-1">
-                        <h3
-                          class="text-lg font-bold text-blue-700 group-hover:text-blue-800"
-                        >
-                          About MMMUT
-                        </h3>
-                        <p class="text-gray-600 text-sm">
-                          Discover our university's rich legacy and vision
-                        </p>
-                      </div>
-                      <i
-                        class="bx bx-right-arrow-alt text-2xl text-blue-500 group-hover:transform group-hover:translate-x-2 transition-transform"
-                      ></i>
-                    </div>
-                  </div>
-                </a>
+          <!-- Registration -->
+          <div class="announcement-item">
+            <div class="announcement-icon">
+              <i class="bx bx-user-plus text-purple-500"></i>
+            </div>
+            <div class="announcement-content">
+              <span class="announcement-label">Registration</span>
+              Early Bird Registration Now Open
+            </div>
+          </div>
 
-                <a href="about-it-department.html" class="block group">
-                  <div
-                    class="card-hover bg-white p-4 rounded-xl shadow-lg border-l-4 border-transparent hover:border-blue-500 transition-all duration-300"
-                  >
-                    <div class="flex items-center space-x-4">
-                      <div class="bg-blue-100 p-3 rounded-lg">
-                        <i class="bx bx-code-alt text-2xl text-blue-600"></i>
-                      </div>
-                      <div class="flex-1">
-                        <h3
-                          class="text-lg font-bold text-blue-700 group-hover:text-blue-800"
-                        >
-                          IT Department
-                        </h3>
-                        <p class="text-gray-600 text-sm">
-                          Explore our cutting-edge IT initiatives
-                        </p>
-                      </div>
-                      <i
-                        class="bx bx-right-arrow-alt text-2xl text-blue-500 group-hover:transform group-hover:translate-x-2 transition-transform"
-                      ></i>
-                    </div>
-                  </div>
-                </a>
+          <!-- Conference Venue -->
+          <div class="announcement-item">
+            <div class="announcement-icon">
+              <i class="bx bx-map-pin text-red-500"></i>
+            </div>
+            <div class="announcement-content">
+              <span class="announcement-label">Venue</span>
+              MMMUT, Gorakhpur
+            </div>
+          </div>
 
-                <a href="about-math-department.html" class="block group">
-                  <div
-                    class="card-hover bg-white p-4 rounded-xl shadow-lg border-l-4 border-transparent hover:border-blue-500 transition-all duration-300"
-                  >
-                    <div class="flex items-center space-x-4">
-                      <div class="bg-blue-100 p-3 rounded-lg">
-                        <i class="bx bx-math text-2xl text-blue-600"></i>
-                      </div>
-                      <div class="flex-1">
-                        <h3
-                          class="text-lg font-bold text-blue-700 group-hover:text-blue-800"
-                        >
-                          Math Department
-                        </h3>
-                        <p class="text-gray-600 text-sm">
-                          Discover excellence in Mathematics
-                        </p>
-                      </div>
-                      <i
-                        class="bx bx-right-arrow-alt text-2xl text-blue-500 group-hover:transform group-hover:translate-x-2 transition-transform"
-                      ></i>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <!-- Important Dates Section -->
-              <div class="mt-12" data-aos="fade-up" data-aos-delay="100">
-                <h2
-                  class="text-2xl sm:text-3xl font-bold text-blue-700 mb-6 sm:mb-8"
-                >
-                  Important Dates
-                </h2>
-                <div class="bg-white rounded-xl shadow-lg p-6 space-y-4">
-                  <!-- Date Item 1 -->
-                  <div class="flex items-center space-x-4 group">
-                    <div
-                      class="bg-blue-100 rounded-lg p-3 group-hover:bg-blue-200 transition-colors"
-                    >
-                      <i class="bx bx-calendar text-2xl text-blue-600"></i>
-                    </div>
-                    <div class="flex-1">
-                      <h3 class="text-sm font-semibold text-gray-800">
-                        Paper Submission Starts
-                      </h3>
-                      <p class="text-blue-600 font-bold">20 Oct 2024</p>
-                    </div>
-                  </div>
-
-                  <!-- Date Item 2 -->
-                  <div class="flex items-center space-x-4 group">
-                    <div
-                      class="bg-red-100 rounded-lg p-3 group-hover:bg-red-200 transition-colors"
-                    >
-                      <i class="bx bx-time text-2xl text-red-600"></i>
-                    </div>
-                    <div class="flex-1">
-                      <h3 class="text-sm font-semibold text-gray-800">
-                        Submission Deadline
-                      </h3>
-                      <p class="text-red-600 font-bold">20 Dec 2024</p>
-                    </div>
-                  </div>
-
-                  <!-- Date Item 3 -->
-                  <div class="flex items-center space-x-4 group">
-                    <div
-                      class="bg-green-100 rounded-lg p-3 group-hover:bg-green-200 transition-colors"
-                    >
-                      <i class="bx bx-check-circle text-2xl text-green-600"></i>
-                    </div>
-                    <div class="flex-1">
-                      <h3 class="text-sm font-semibold text-gray-800">
-                        Acceptance Notification
-                      </h3>
-                      <p class="text-green-600 font-bold">30 Jan 2025</p>
-                    </div>
-                  </div>
-
-                  <!-- Date Item 4 -->
-                  <div class="flex items-center space-x-4 group">
-                    <div
-                      class="bg-purple-100 rounded-lg p-3 group-hover:bg-purple-200 transition-colors"
-                    >
-                      <i class="bx bx-user-plus text-2xl text-purple-600"></i>
-                    </div>
-                    <div class="flex-1">
-                      <h3 class="text-sm font-semibold text-gray-800">
-                        Registration Opens
-                      </h3>
-                      <p class="text-purple-600 font-bold">10 Feb 2025</p>
-                    </div>
-                  </div>
-
-                  <!-- Date Item 5 -->
-                  <div class="flex items-center space-x-4 group">
-                    <div
-                      class="bg-orange-100 rounded-lg p-3 group-hover:bg-orange-200 transition-colors"
-                    >
-                      <i class="bx bx-timer text-2xl text-orange-600"></i>
-                    </div>
-                    <div class="flex-1">
-                      <h3 class="text-sm font-semibold text-gray-800">
-                        Registration Closes
-                      </h3>
-                      <p class="text-orange-600 font-bold">20 Feb 2025</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Paper Submission Guidelines Section -->
-              <div class="mt-12" data-aos="fade-up" data-aos-delay="200">
-                <h2
-                  class="text-2xl sm:text-3xl font-bold text-blue-700 mb-6 sm:mb-8"
-                >
-                  Paper Submission Guidelines
-                </h2>
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                  <div class="space-y-6">
-                    <!-- Format Requirement -->
-                    <div class="flex items-start space-x-4">
-                      <div class="bg-blue-100 rounded-lg p-3 flex-shrink-0">
-                        <i class="bx bx-file text-2xl text-blue-600"></i>
-                      </div>
-                      <div>
-                        <h3 class="text-base font-semibold text-gray-800 mb-2">
-                          Format Requirements
-                        </h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                          Authors are requested to adhere to the IEEE conference
-                          paper format and it must be written in English.
-                        </p>
-                      </div>
-                    </div>
-
-                    <!-- Draft Submission -->
-                    <div class="flex items-start space-x-4">
-                      <div class="bg-purple-100 rounded-lg p-3 flex-shrink-0">
-                        <i class="bx bx-edit text-2xl text-purple-600"></i>
-                      </div>
-                      <div>
-                        <h3 class="text-base font-semibold text-gray-800 mb-2">
-                          Draft Submission
-                        </h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                          Draft version of papers should be submitted for review
-                          before the submission deadline.
-                        </p>
-                      </div>
-                    </div>
-
-                    <!-- Page Limit -->
-                    <div class="flex items-start space-x-4">
-                      <div class="bg-green-100 rounded-lg p-3 flex-shrink-0">
-                        <i class="bx bx-book-open text-2xl text-green-600"></i>
-                      </div>
-                      <div>
-                        <h3 class="text-base font-semibold text-gray-800 mb-2">
-                          Page Limit
-                        </h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                          Maximum six (6) pages including figures and references
-                          are allowed in PDF format.
-                        </p>
-                      </div>
-                    </div>
-
-                    <!-- File Size -->
-                    <div class="flex items-start space-x-4">
-                      <div class="bg-orange-100 rounded-lg p-3 flex-shrink-0">
-                        <i class="bx bx-data text-2xl text-orange-600"></i>
-                      </div>
-                      <div>
-                        <h3 class="text-base font-semibold text-gray-800 mb-2">
-                          File Size
-                        </h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                          Total file size of the paper must not exceed 10 MB.
-                        </p>
-                      </div>
-                    </div>
-
-                    <!-- Action Button -->
-                    <a
-                      href="guidelines.html"
-                      class="block mt-6 bg-blue-600 hover:bg-blue-700 text-white text-center py-3 px-6 rounded-lg transition-colors duration-300 group"
-                    >
-                      <span class="flex items-center justify-center space-x-2">
-                        <span>View Full Guidelines</span>
-                        <i
-                          class="bx bx-right-arrow-alt text-xl group-hover:transform group-hover:translate-x-1 transition-transform"
-                        ></i>
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              </div>
+          <!-- Important Updates -->
+          <div class="announcement-item">
+            <div class="announcement-icon">
+              <i class="bx bx-badge-check text-amber-500"></i>
+            </div>
+            <div class="announcement-content">
+              <span class="announcement-label">Achievement</span>
+              NAAC Grade A University
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="h-20 text-center"></div>
+    <!-- Conference Section -->
+    <section class="section-padding bg-light-gray">
+      <div class="container mt-2">
+        <h2 class="section-title">
+          <div class="icon-box">
+            <i data-lucide="presentation" size="24"></i>
+          </div>
+          About Conference
+        </h2>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card p-4">
+              <div class="row">
+                <div class="col-md-6">
+                  <img
+                    src="assets/images/conference-hall.jpg"
+                    alt="Conference Hall"
+                    class="img-fluid rounded mb-4"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <p class="mb-4">
+                    Madan Mohan Malaviya University of Technology located in
+                    Gorakhpur, Uttar Pradesh, India is organizing conference
+                    focused on emerging technologies, hosted by the Department
+                    of Information Technology & Computer Application and
+                    Department of Mathematics & Scientific Computing.
+                  </p>
+                  <p class="mb-4">
+                    This conference covers the topics such as Computing,
+                    Artificial Intelligence, Computer Vision, Data Science,
+                    Algebra, Cryptography and Computing, Operation Research &
+                    Queuing Theory, Differential Equation & Mathematical
+                    Modeling, and other related technology trends.
+                  </p>
+                  <p>
+                    Keynote speeches and technical sessions will enhance the
+                    participants' understanding about the cutting-edge
+                    developments, while paper presentations will provide them
+                    platforms for sharing their innovative ideas. The conference
+                    will focus on interdisciplinary research and practical
+                    applications, helping attendees to stay informed about the
+                    technological advancements.
+                  </p>
+                </div>
+              </div>
 
+              <!-- Stats Section -->
+              <div class="stats-container mt-4">
+                <div class="row">
+                  <div class="col-md-3 stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Speakers</div>
+                  </div>
+                  <div class="col-md-3 stat-item">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Expected Attendees</div>
+                  </div>
+                  <div class="col-md-3 stat-item">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Technical Sessions</div>
+                  </div>
+                  <div class="col-md-3 stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Workshop Sessions</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- University Section -->
+    <section class="section-padding bg-light-gray">
+      <div class="container">
+        <h2 class="section-title">
+          <div class="icon-box">
+            <i data-lucide="building-2" size="24"></i>
+          </div>
+          About MMMUT Gorakhpur
+        </h2>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card p-4">
+              <div class="row align-items-center">
+                <div class="col-md-6">
+                  <p class="mb-4">
+                    Madan Mohan Malaviya University of Technology, Gorakhpur has
+                    been established in year 2013 by the Government of Uttar
+                    Pradesh in the form of a non-affiliating, teaching and
+                    research University after reconstituting the Madan Mohan
+                    Malaviya Engineering College, Gorakhpur which was
+                    established in 1962.
+                  </p>
+                  <p>
+                    Fifty-Four batches of students have entered its portals to
+                    emerge after four years of rigorous education under the
+                    tutelage of some of the most venerable teachers, engineers
+                    ready to face the world and create new worlds. The
+                    University is located in the Gorakhpur-Deoria Road about 9
+                    Km away from Gorakhpur Railway Station.
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <img
+                    src="assets/images/university-campus.jpg"
+                    alt="MMMUT Campus"
+                    class="img-fluid rounded"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="row">
+          <!-- IT Department -->
+          <div class="col-lg-6 mb-4">
+            <h2 class="section-title">
+              <div class="icon-box">
+                <i data-lucide="cpu" size="24"></i>
+              </div>
+              IT & Computer Application
+            </h2>
+            <div class="card">
+              <img
+                src="assets/images/it-dept.jpg"
+                alt="IT Department"
+                class="department-image"
+              />
+              <div class="card p-4 h-100">
+                <p class="mb-4">
+                  The Department of Information Technology and Computer
+                  Application (ITCA) was inaugurated on 24th August 2018. The
+                  department became functional from 25th August 2018 with two PG
+                  programs - MCA and M. Tech and Ph.D programme.
+                </p>
+                <p>
+                  The ITCA department aims to achieve national and international
+                  recognition through the educational and research achievements
+                  of its students. The department has dedicated and highly
+                  motivated faculty members who make all effective efforts to
+                  prepare the students to be successful IT professionals.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mathematics Department -->
+          <div class="col-lg-6 mb-4">
+            <h2 class="section-title">
+              <div class="icon-box">
+                <i data-lucide="calculator" size="24"></i>
+              </div>
+              Mathematics & Scientific Computing
+            </h2>
+            <div class="card">
+              <img
+                src="assets/images/math-dept.jpg"
+                alt="Mathematics Department"
+                class="department-image"
+              />
+              <div class="card p-4 h-100">
+                <p class="mb-4">
+                  The Department of Mathematics and Scientific Computing
+                  attained its present status of an independent department on
+                  22nd June, 2019. Prior to this department was constituent part
+                  of Applied Science Department, established in 1962.
+                </p>
+                <p>
+                  The department is committed to impart the effective teaching
+                  and quality research work in different areas of Mathematics
+                  and Scientific Computing. Courses Offered by the Department
+                  are M.Sc. Mathematics (Specialization in Computing), Ph.D. in
+                  Mathematics.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Initialize Lucide Icons -->
     <script>
-      AOS.init({
-        duration: 800,
-        once: true,
-        offset: 100,
-        easing: "ease-in-out",
-      });
+      lucide.createIcons();
     </script>
   </body>
 </html>
