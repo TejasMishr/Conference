@@ -1,9 +1,6 @@
-if (window.screen.width < 768) {
-  $("#navbar-toggle").addClass("active");
+if (window.screen.width <= 800) {
+  $("#navbar-toggle").addClass("inactive");
   $("nav ul").addClass("hidden");
-  $("#navbar-toggle").click(function () {
-    $("nav ul").slideToggle();
-  });
 }
 
 (function ($) {
