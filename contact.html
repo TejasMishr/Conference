@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <!-- Add animation library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  </head>
+  <body class="bg-gradient-to-br from-gray-50 to-gray-100">
+    <!-- Contact Section -->
+    <div class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+      <!-- Hero Section -->
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">
+          <span
+            class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600"
+          >
+            Get in Touch
+          </span>
+        </h1>
+        <p class="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">
+          Have questions? We're here to help. Send us a message and we'll
+          respond as soon as possible.
+        </p>
+      </div>
+
+      <div
+        class="max-w-lg mx-auto md:max-w-none md:grid md:grid-cols-2 md:gap-12"
+      >
+        <!-- Contact Information -->
+        <div
+          class="relative bg-white rounded-xl shadow-sm p-8"
+          data-aos="fade-right"
+        >
+          <div class="space-y-8">
+            <!-- Contact Info Cards -->
+            <div
+              class="bg-gray-50 rounded-lg p-6 transition-transform hover:scale-105"
+            >
+              <div class="flex items-center">
+                <div class="bg-blue-100 rounded-full p-3">
+                  <i data-lucide="phone" class="h-6 w-6 text-blue-600"></i>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-lg font-semibold text-gray-900">Phone</h3>
+                  <p class="text-gray-600">+91 6268926355</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="bg-gray-50 rounded-lg p-6 transition-transform hover:scale-105"
+            >
+              <div class="flex items-center">
+                <div class="bg-blue-100 rounded-full p-3">
+                  <i data-lucide="mail" class="h-6 w-6 text-blue-600"></i>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-lg font-semibold text-gray-900">Email</h3>
+                  <p class="text-gray-600">support@indigle.com</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="bg-gray-50 rounded-lg p-6 transition-transform hover:scale-105"
+            >
+              <div class="flex items-center">
+                <div class="bg-blue-100 rounded-full p-3">
+                  <i data-lucide="map-pin" class="h-6 w-6 text-blue-600"></i>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-lg font-semibold text-gray-900">Location</h3>
+                  <p class="text-gray-600">
+                    MMM University of Technology, Deoria Road, Singhariya,
+                    Kunraghat, Gorakhpur, Uttar Pradesh 273016
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Media Links -->
+          <div class="mt-12">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Follow Us</h3>
+            <div class="flex space-x-6">
+              <a
+                href="#"
+                class="bg-gray-50 p-3 rounded-full text-gray-400 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+              >
+                <i data-lucide="linkedin" class="h-6 w-6"></i>
+              </a>
+              <a
+                href="#"
+                class="bg-gray-50 p-3 rounded-full text-gray-400 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+              >
+                <i data-lucide="twitter" class="h-6 w-6"></i>
+              </a>
+              <a
+                href="#"
+                class="bg-gray-50 p-3 rounded-full text-gray-400 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+              >
+                <i data-lucide="facebook" class="h-6 w-6"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="mt-12 sm:mt-16 md:mt-0" data-aos="fade-left">
+          <div class="bg-white shadow-lg rounded-xl p-8">
+            <form action="#" method="POST" class="space-y-6">
+              <!-- Name -->
+              <div class="group">
+                <label
+                  for="name"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Full Name
+                </label>
+                <div class="relative">
+                  <div
+                    class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                  >
+                    <i data-lucide="user" class="h-5 w-5 text-gray-400"></i>
+                  </div>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    class="pl-10 block w-full rounded-lg border-gray-200 bg-gray-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm transition duration-150 ease-in-out hover:border-gray-300"
+                    placeholder="Name"
+                  />
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="group">
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Email Address
+                </label>
+                <div class="relative">
+                  <div
+                    class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                  >
+                    <i data-lucide="mail" class="h-5 w-5 text-gray-400"></i>
+                  </div>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    class="pl-10 block w-full rounded-lg border-gray-200 bg-gray-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm transition duration-150 ease-in-out hover:border-gray-300"
+                    placeholder="you@example.com"
+                  />
+                </div>
+              </div>
+
+              <!-- Subject -->
+              <div class="group">
+                <label
+                  for="subject"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Subject
+                </label>
+                <div class="relative">
+                  <div
+                    class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                  >
+                    <i
+                      data-lucide="help-circle"
+                      class="h-5 w-5 text-gray-400"
+                    ></i>
+                  </div>
+                  <input
+                    type="text"
+                    name="subject"
+                    id="subject"
+                    class="pl-10 block w-full rounded-lg border-gray-200 bg-gray-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm transition duration-150 ease-in-out hover:border-gray-300"
+                    placeholder="How can we help?"
+                  />
+                </div>
+              </div>
+
+              <!-- Message -->
+              <div class="group">
+                <label
+                  for="message"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Message
+                </label>
+                <div class="relative">
+                  <div class="absolute top-3 left-3 pointer-events-none">
+                    <i
+                      data-lucide="message-square"
+                      class="h-5 w-5 text-gray-400"
+                    ></i>
+                  </div>
+                  <textarea
+                    name="message"
+                    id="message"
+                    rows="4"
+                    class="pl-10 block w-full rounded-lg border-gray-200 bg-gray-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm transition duration-150 ease-in-out hover:border-gray-300"
+                    placeholder="Write your message here..."
+                  ></textarea>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <div>
+                <button
+                  type="submit"
+                  class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-150 ease-in-out transform hover:scale-[1.02] shadow-md"
+                >
+                  Send Message
+                  <i data-lucide="send" class="h-5 w-5 ml-2"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map Section -->
+      <div
+        class="mt-16 relative h-96 rounded-xl overflow-hidden shadow-lg"
+        data-aos="fade-up"
+      >
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10932.387069002392!2d83.42964993952204!3d26.737552831523715!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39915ca3e2aa136b%3A0x2c039bdf0211338a9!2sMMM%20University%20of%20Technology!5e0!3m2!1sen!2sin!4v1737653531538!5m2!1sen!2sin"
+          class="w-full h-full"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    </script>
+  </body>
+</html>
