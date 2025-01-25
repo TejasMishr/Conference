@@ -5,6 +5,19 @@
   #brand-name {
     opacity: 0;
   }
+  #date-box {
+    height: 30px;
+    width: auto;
+    transform: translateY(2px);
+  }
+  #conf-title {
+    font-size: 10px;
+    transform: translateY(10px);
+  }
+  #conf-date {
+    font-size: 12px;
+    transform: translateY(-5px);
+  }
 }
 /* Add after the navigation styles */
 .announcement-bar {
