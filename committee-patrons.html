@@ -1,5 +1,6 @@
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Patrons & Chairs -6-7 Mar, 2025</title>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
@@ -907,11 +908,11 @@
       const memberCards = technicalMembers
         .map(
           (member) => `
-  <div class="committee-card bg-white rounded-lg shadow-sm p-6 text-center">
-    <h3 class="text-xl font-bold text-gray-800 mb-2">${member.name}</h3>
-    <p class="text-blue-600">${member.place}</p>
-  </div>
-`
+          <div class="committee-card bg-white rounded-lg shadow-sm p-6 text-center">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">${member.name}</h3>
+            <p class="text-blue-600">${member.place}</p>
+          </div>
+        `
         )
         .join("");
       document.getElementById("members-container").innerHTML = memberCards;
@@ -919,11 +920,11 @@
       const publicityMemberCards = publicityMembers
         .map(
           (member) => `
-  <div class="committee-card bg-white rounded-lg shadow-sm p-6 text-center">
-    <h3 class="text-xl font-bold text-gray-800 mb-2">${member.name}</h3>
-    <p class="text-blue-600">${member.post}</p>
-  </div>
-`
+          <div class="committee-card bg-white rounded-lg shadow-sm p-6 text-center">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">${member.name}</h3>
+            <p class="text-blue-600">${member.post}</p>
+          </div>
+        `
         )
         .join("");
 
@@ -933,11 +934,11 @@
       const organizingMemberCards = organizingMembers
         .map(
           (member) => `
-  <div class="committee-card bg-white rounded-lg shadow-sm p-6 text-center">
-    <h3 class="text-xl font-bold text-gray-800 mb-2">${member.name}</h3>
-    <p class="text-blue-600">${member.position}</p>
-  </div>
-`
+          <div class="committee-card bg-white rounded-lg shadow-sm p-6 text-center">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">${member.name}</h3>
+            <p class="text-blue-600">${member.position}</p>
+          </div>
+        `
         )
         .join("");
 
@@ -947,11 +948,10 @@
       const hospitalityMemberCards = hospitalityMembers
         .map(
           (member) => `
-  <div class="committee-card bg-white rounded-lg shadow-sm p-6 text-center">
-    <h3 class="text-xl font-bold text-gray-800 mb-2">${member.name}</h3>
-    <p class="text-blue-600">${member.role}</p>
-  </div>
-`
+          <div class="committee-card bg-white rounded-lg shadow-sm p-6 text-center">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">${member.name}</h3>
+          </div>
+        `
         )
         .join("");
       document.getElementById("hospitality-members-container").innerHTML =
@@ -960,11 +960,10 @@
       const transportMemberCards = transportMembers
         .map(
           (member) => `
-  <div class="committee-card bg-white rounded-lg shadow-sm p-6 text-center">
-    <h3 class="text-xl font-bold text-gray-800 mb-2">${member.name}</h3>
-    <p class="text-blue-600">${member.role}</p>
-  </div>
-`
+          <div class="committee-card bg-white rounded-lg shadow-sm p-6 text-center">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">${member.name}</h3>
+          </div>
+        `
         )
         .join("");
 
@@ -974,11 +973,10 @@
       const innovationMemberCards = innovationMembers
         .map(
           (member) => `
-  <div class="committee-card bg-white rounded-lg shadow-sm p-6 text-center">
-    <h3 class="text-xl font-bold text-gray-800 mb-2">${member.name}</h3>
-    <p class="text-blue-600">${member.role}</p>
-  </div>
-`
+        <div class="committee-card bg-white rounded-lg shadow-sm p-6 text-center">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">${member.name}</h3>
+        </div>
+      `
         )
         .join("");
 

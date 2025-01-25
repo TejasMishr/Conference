@@ -2,6 +2,9 @@
   #nav-bar {
     background-color: #fff;
   }
+  #brand-name {
+    opacity: 0;
+  }
 }
 /* Add after the navigation styles */
 .announcement-bar {
