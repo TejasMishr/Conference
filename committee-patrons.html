@@ -335,8 +335,8 @@
           data-aos="fade-up"
           data-aos-delay="200"
         >
-          Meet our distinguished patrons and chairs leading6-7 Mar, 2025 towards
-          excellence
+          Meet our distinguished patrons and chairs leading 6-7 Mar, 2025
+          towards excellence
         </p>
       </div>
     </div>
@@ -629,7 +629,10 @@
           >
             Advisory Committee
           </h2>
-          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            id="advisory-committee-members-container"
+          >
             <!-- Advisory Committee Members -->
             <div
               class="committee-card bg-white rounded-xl shadow-sm overflow-hidden p-8 text-center"
@@ -646,54 +649,6 @@
               </h3>
               <p class="text-blue-600 font-medium mb-3">Melbourne University</p>
               <p class="text-gray-600 mb-6">Australia</p>
-              <div class="social-links flex justify-center space-x-4">
-                <a href="#" class="text-blue-600 hover:text-white">
-                  <i class="bx bx-envelope text-xl"></i>
-                </a>
-                <a href="#" class="text-blue-600 hover:text-white">
-                  <i class="bx bxl-linkedin text-xl"></i>
-                </a>
-              </div>
-            </div>
-
-            <div
-              class="committee-card bg-white rounded-xl shadow-sm overflow-hidden p-8 text-center"
-            >
-              <div class="relative mb-6">
-                <img
-                  src="./assets/ProfManoj.jpg"
-                  alt="Prof. Manoj Misra"
-                  class="avatar-image"
-                />
-              </div>
-              <h3 class="text-2xl font-bold text-gray-800 mb-2">
-                Prof. Manoj Misra
-              </h3>
-              <p class="text-blue-600 font-medium mb-3">IIT Roorkee</p>
-              <div class="social-links flex justify-center space-x-4">
-                <a href="#" class="text-blue-600 hover:text-white">
-                  <i class="bx bx-envelope text-xl"></i>
-                </a>
-                <a href="#" class="text-blue-600 hover:text-white">
-                  <i class="bx bxl-linkedin text-xl"></i>
-                </a>
-              </div>
-            </div>
-
-            <div
-              class="committee-card bg-white rounded-xl shadow-sm overflow-hidden p-8 text-center"
-            >
-              <div class="relative mb-6">
-                <img
-                  src="./assets/ProfGRSinha.jpg"
-                  alt="Prof. G R Sinha"
-                  class="avatar-image"
-                />
-              </div>
-              <h3 class="text-2xl font-bold text-gray-800 mb-2">
-                Prof. G R Sinha
-              </h3>
-              <p class="text-blue-600 font-medium mb-3">IISC Bangalore</p>
               <div class="social-links flex justify-center space-x-4">
                 <a href="#" class="text-blue-600 hover:text-white">
                   <i class="bx bx-envelope text-xl"></i>
@@ -905,6 +860,31 @@
 
     <script src="names.js"></script>
     <script>
+      const advisoryCommitteeMemberCards = advisoryCommitteeMembers
+        .map(
+          (member) => `
+        <div class="committee-card bg-white rounded-xl shadow-sm overflow-hidden p-8 text-center">
+          <div class="relative mb-6">
+            <img src="./assets/${member.imgSrc}" alt="${member.name}" class="avatar-image" />
+          </div>
+          <h3 class="text-2xl font-bold text-gray-800 mb-2">${member.name}</h3>
+          <p class="text-blue-600 font-medium mb-3">${member.place}</p>
+          <div class="social-links flex justify-center space-x-4">
+            <a href="#" class="text-blue-600 hover:text-white">
+              <i class="bx bx-envelope text-xl"></i>
+            </a>
+            <a href="#" class="text-blue-600 hover:text-white">
+              <i class="bx bxl-linkedin text-xl"></i>
+            </a>
+          </div>
+        </div>
+      `
+        )
+        .join("");
+
+      document.getElementById(
+        "advisory-committee-members-container"
+      ).innerHTML = advisoryCommitteeMemberCards;
       const memberCards = technicalMembers
         .map(
           (member) => `
