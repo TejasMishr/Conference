@@ -1,3 +1,76 @@
+const advisoryCommitteeMembers = [
+  {
+    name: "Prof. R. K. Buyya",
+    place: "Melbourne University, Australia",
+    imgSrc: "Prof. R. K. Buyya.jpg",
+  },
+  {
+    name: "Prof. Manoj Misra",
+    place: "IIT Roorkee",
+    imgSrc: "Prof. Manoj Misra.jpg",
+  },
+  {
+    name: "Prof. G. R. Sinha",
+    place: "IISC Bangalore",
+    imgSrc: "Prof. G. R. Sinha.jpg",
+  },
+  {
+    name: "Prof. Rajeev Srivastava",
+    place: "IIT BHU",
+    imgSrc: "Prof. Rajeev Srivastava.jpg",
+  },
+  {
+    name: "Prof. P. K. Mishra",
+    place: "IIT BHU",
+    imgSrc: "Prof. P. K. Mishra.jpg",
+  },
+  {
+    name: "Prof. Shekhar Verma",
+    place: "IIIT Prayagraj",
+    imgSrc: "Prof. Shekhar Verma.jpg",
+  },
+  {
+    name: "Prof. S. K. Singh",
+    place: "IIT BHU",
+    imgSrc: "Prof S K Singh.jpg",
+  },
+  {
+    name: "Prof. R. S. Yadav",
+    place: "NIT Prayagraj",
+    imgSrc: "Prof R S Yadav.jpg",
+  },
+  {
+    name: "Prof. S. K. Singh",
+    place: "IIIT Prayagraj",
+    imgSrc: "Prof S K Singh2.jpg",
+  },
+  {
+    name: "Prof. Nanhay Singh",
+    place: "NSUT New Delhi",
+    imgSrc: "Prof. Nanhay Singh.jpg",
+  },
+  {
+    name: "Prof. Vivek Sahai",
+    place: "University of Lucknow",
+    imgSrc: "Prof Vivek Sahai.jpg",
+  },
+  {
+    name: "Prof. S. Singh",
+    place: "PEC, Chandigarh",
+    imgSrc: "Prof S. Singh.jpg",
+  },
+  {
+    name: "Prof. Shiv Datt Kumar",
+    place: "MNNIT Prayagraj",
+    imgSrc: "Prof. Shiv Datt Kumar.jpg",
+  },
+  {
+    name: "Prof. K. V. Arya",
+    place: "IIIT Gwalior",
+    imgSrc: "Prof. K. V. Arya.jpg",
+  },
+];
+
 const technicalMembers = [
   { name: "Dr. Anurag Singh", place: "NIT Delhi" },
   { name: "Prof. Nanhay Singh", place: "NSUT New Delhi" },
