@@ -121,7 +121,7 @@ const organizingMembers = [
   { name: "Prof. Shiva Prakash", position: "Chairman" },
   { name: "Prof. S. P. Singh", position: "Co-Chairman" },
   { name: "Prof. U. C. Jaiswal", position: "Member" },
-  { name: "Dr. D.S. Singh", position: "Member" },
+  { name: "Prof. D.S. Singh", position: "Member" },
   { name: "Dr. Jay Prakash", position: "Member" },
   { name: "Dr. R. K. Dwivedi", position: "Member" },
   { name: "Mr. Manish Kr. Gupta", position: "Member" },
