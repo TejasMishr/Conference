@@ -122,7 +122,7 @@ const organizingMembers = [
   { name: "Prof. S. P. Singh", position: "Co-Chairman" },
   { name: "Prof. U. C. Jaiswal", position: "Member" },
   { name: "Prof. D.S. Singh", position: "Member" },
-  { name: "Dr. Jay Prakash", position: "Member" },
+  { name: "Prof. Jay Prakash", position: "Member" },
   { name: "Dr. R. K. Dwivedi", position: "Member" },
   { name: "Mr. Manish Kr. Gupta", position: "Member" },
   { name: "Ms. Kumud Patel", position: "Member" },
@@ -136,8 +136,8 @@ const organizingMembers = [
 ];
 
 const hospitalityMembers = [
-  { name: "Dr. D. S. Singh", role: "Convener" },
-  { name: "Dr. Jay Prakash", role: "Member" },
+  { name: "Profs. D. S. Singh", role: "Convener" },
+  { name: "Prof. Jay Prakash", role: "Member" },
   { name: "Mr. Vijay Kumar Tiwari", role: "Member" },
   { name: "Ms. Prachi Verma", role: "Member" },
   { name: "Ms. Preeti Singh", role: "Member" },

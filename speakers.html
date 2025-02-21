@@ -329,11 +329,11 @@
         return `
           <div class="speaker-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300"
                data-aos="fade-up">
-            <div class="aspect-w-4 aspect-h-5 overflow-hidden bg-gray-100">
+            <div class="aspect-w-4 aspect-h-5 overflow-hidden bg-gray-100 rounded-lg justify-center items-center flex">
               <img 
                 src="${speaker.image}" 
                 alt="${speaker.name}"
-                class="speaker-image w-full h-64 object-cover object-center transition-transform duration-500"
+                class="speaker-image w-64 h-64 object-cover object-center transition-transform duration-500 rounded-full"
                 onerror="handleImageError(this)"
                 loading="lazy"
               />
